@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Codemasters.F1_2019
+namespace Codemasters.F1_2020
 {
     public static class CodemastersToolkit
         {

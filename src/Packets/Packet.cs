@@ -2,7 +2,7 @@ using System;
 using TimHanewichToolkit;
 using System.Collections.Generic;
 
-namespace Codemasters.F1_2019
+namespace Codemasters.F1_2020
 {
     /// <summary>
     /// Foundation class.  All other packet types inherit this class.  23 bytes.
