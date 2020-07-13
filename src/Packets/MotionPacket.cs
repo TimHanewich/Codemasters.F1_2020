@@ -30,7 +30,7 @@ namespace Codemasters.F1_2020
             ByteArrayManager BAM = new ByteArrayManager(bytes);
 
             //Update the header.
-            base.LoadBytes(BAM.NextBytes(23));
+            base.LoadBytes(BAM.NextBytes(24));
 
 
 
@@ -38,7 +38,7 @@ namespace Codemasters.F1_2020
             //Create car motion data
             int t = 1;
             List<CarMotionData> AllCarData = new List<CarMotionData>();
-            for (t = 1; t <= 20; t++)
+            for (t = 1; t <= 22; t++)
             {
                 CarMotionData thiscardata = CarMotionData.Create(BAM.NextBytes(60));
                 AllCarData.Add(thiscardata);
@@ -103,7 +103,7 @@ namespace Codemasters.F1_2020
 
         }
 
-
+        //60 bytes
         public class CarMotionData
         {
             public float PositionX { get; set; }

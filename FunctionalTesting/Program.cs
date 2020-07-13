@@ -16,18 +16,19 @@ namespace FunctionalTesting
             JsonSerializer js = new JsonSerializer();
             List<byte[]> data = js.Deserialize<List<byte[]>>(jtr);
 
-            List<int> lengths = new List<int>();
             foreach (byte[] b in data)
             {
-                if (lengths.Contains(b.Length) == false)
-                {
-                    lengths.Add(b.Length);
-                }
-            }
+                Packet p = new Packet();
+                p.LoadBytes(b);
 
-            foreach (int i in lengths)
-            {
-                Console.WriteLine(i);
+                Console.WriteLine(p.PacketFormat.ToString());
+                Console.WriteLine(p.GameMajorVersion.ToString());
+                Console.WriteLine(p.GameMinorVersion.ToString());
+                Console.WriteLine(p.PlayerCarIndex.ToString());
+                Console.WriteLine(p.SecondaryPlayerCarIndex.ToString());
+                Console.WriteLine(p.PacketType.ToString());
+                Console.WriteLine(p.UniqueSessionId.ToString());
+                Console.ReadLine();
             }
         }
     }
