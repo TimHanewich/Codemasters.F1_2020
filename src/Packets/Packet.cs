@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Codemasters.F1_2020
 {
     /// <summary>
-    /// Foundation class.  All other packet types inherit this class.  23 bytes.
+    /// Foundation class.  All other packet types inherit this class.  24 bytes.
     /// </summary>
     public class Packet
     {
@@ -118,6 +118,9 @@ namespace Codemasters.F1_2020
 
             //Get player car index
             PlayerCarIndex = BAM.NextByte();
+
+            //Get secondary player car index
+            SecondaryPlayerCarIndex = BAM.NextByte();
         }
 
         public Packet GetRelatedPacket(Packet[] family, PacketType desired_packet)
