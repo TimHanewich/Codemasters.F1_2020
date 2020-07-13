@@ -19,6 +19,7 @@ namespace Codemasters.F1_2020
         public float SessionTime { get; set; }
         public uint FrameIdentifier { get; set; }
         public byte PlayerCarIndex { get; set; }
+        public byte SecondaryPlayerCarIndex {get; set;} //New to F1 2020. The index of the secondayr player's car (splitscreen).  255 if no second player.
 
         public virtual void LoadBytes(byte[] bytes)
         {
