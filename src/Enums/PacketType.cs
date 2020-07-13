@@ -11,6 +11,8 @@ namespace Codemasters.F1_2020
         Participants,
         CarSetup,
         CarTelemetry,
-        CarStatus
+        CarStatus,
+        FinalClassification, //New to F1 2020
+        LobbyInfo //New to F1 2020
     }
 }
