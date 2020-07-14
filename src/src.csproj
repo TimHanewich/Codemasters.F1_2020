@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Codemasters.F1_2019</PackageId>
+    <PackageId>Codemasters.F1_2020</PackageId>
     <Version>0.1.0</Version>
     <Authors>Tim Hanewich</Authors>
-    <Product>Codemasters.F1_2019</Product>
-    <Description>Resources for deserializing UDP data from the F1 2019 video game by Codemasters.</Description>
+    <Product>Codemasters.F1_2020</Product>
+    <Description>Resources for deserializing UDP data from the F1 2020 video game by Codemasters.</Description>
     <Copyright>Tim Hanewich</Copyright>
-    <RepositoryUrl>https://github.com/TimHanewich/Codemasters.F1_2019</RepositoryUrl>
+    <RepositoryUrl>https://github.com/TimHanewich/Codemasters.F1_2020</RepositoryUrl>
     <PackageIcon>package_icon.png</PackageIcon>
-    <PackageTags>codemasters,formula 1,f1,racing,xbox,f1 2019</PackageTags>
+    <PackageTags>codemasters,formula 1,f1,racing,xbox,f1 2020</PackageTags>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
     <FileVersion>0.0.0.0</FileVersion>
     <PackageLicenseFile>License.md</PackageLicenseFile>
