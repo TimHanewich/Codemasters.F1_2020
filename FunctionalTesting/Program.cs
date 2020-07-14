@@ -10,7 +10,7 @@ namespace FunctionalTesting
     {
         static void Main(string[] args)
         {
-            Stream s = System.IO.File.OpenRead("C:\\Users\\TaHan\\Downloads\\Codemasters.F1_2020\\SampleData\\Australia_Practice_AlphaTauri.txt");
+            Stream s = System.IO.File.OpenRead("C:\\Users\\tihanewi\\Downloads\\Codemasters.F1_2020\\SampleData\\Australia_Practice_AlphaTauri.txt");
             StreamReader sr = new StreamReader(s);
             JsonTextReader jtr = new JsonTextReader(sr);
             JsonSerializer js = new JsonSerializer();
@@ -19,13 +19,13 @@ namespace FunctionalTesting
             foreach (byte[] b in data)
             {
                 PacketType pt = CodemastersToolkit.GetPacketType(b);
-                if (pt == PacketType.Lap)
+                if (pt == PacketType.Participants)
                 {
-                    LapPacket lp = new LapPacket();
-                    lp.LoadBytes(b);
-                    foreach (LapPacket.LapData ld in lp.FieldLapData)
+                    ParticipantPacket pp = new ParticipantPacket();
+                    pp.LoadBytes(b);
+                    foreach (ParticipantPacket.ParticipantData pd in pp.FieldParticipantData)
                     {
-                        Console.WriteLine(ld.CarPosition.ToString());
+                        Console.WriteLine(pd.Name);
                     }
                     Console.ReadLine();
                 }

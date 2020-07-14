@@ -13,13 +13,13 @@ namespace Codemasters.F1_2020
         public override void LoadBytes(byte[] bytes)
         {
             ByteArrayManager BAM = new ByteArrayManager(bytes);
-            base.LoadBytes(BAM.NextBytes(23));
+            base.LoadBytes(BAM.NextBytes(24));
 
             NumberOfActiveCars = BAM.NextByte();
 
             List<ParticipantData> PDs = new List<ParticipantData>();
             int t = 1;
-            for (t = 1; t <= 20; t++)
+            for (t = 1; t <= 22; t++)
             {
                 PDs.Add(ParticipantData.Create(BAM.NextBytes(54)));
             }
@@ -79,11 +79,11 @@ namespace Codemasters.F1_2020
                 nb = BAM.NextByte();
                 if (nb == 0)
                 {
-                    ReturnInstance.TelemetryPrivate = false;
+                    ReturnInstance.TelemetryPrivate = true;
                 }
                 else if (nb == 1)
                 {
-                    ReturnInstance.TelemetryPrivate = true;
+                    ReturnInstance.TelemetryPrivate = false;
                 }
 
 
