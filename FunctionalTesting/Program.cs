@@ -19,9 +19,15 @@ namespace FunctionalTesting
             foreach (byte[] b in data)
             {
                 PacketType pt = CodemastersToolkit.GetPacketType(b);
-                if (pt == PacketType.Session)
+                if (pt == PacketType.Lap)
                 {
-                    
+                    LapPacket lp = new LapPacket();
+                    lp.LoadBytes(b);
+                    foreach (LapPacket.LapData ld in lp.FieldLapData)
+                    {
+                        Console.WriteLine(ld.CarPosition.ToString());
+                    }
+                    Console.ReadLine();
                 }
             }
         }

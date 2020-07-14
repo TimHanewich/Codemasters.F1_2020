@@ -14,7 +14,7 @@ namespace Codemasters.F1_2020
             ByteArrayManager BAM = new ByteArrayManager(bytes);
 
             //Get header
-            base.LoadBytes(BAM.NextBytes(23));
+            base.LoadBytes(BAM.NextBytes(24));
 
 
 
@@ -22,23 +22,33 @@ namespace Codemasters.F1_2020
             //Get the next 20 data packages
             List<LapData> LDs = new List<LapData>();
             int t = 1;
-            for (t = 1; t <= 20; t++)
+            for (t = 1; t <= 22; t++)
             {
-                LDs.Add(LapData.Create(BAM.NextBytes(41)));
+                LDs.Add(LapData.Create(BAM.NextBytes(53)));
             }
             FieldLapData = LDs.ToArray();
         }
 
         /// <summary>
-        /// 41 bytes long.
+        /// 53 bytes long.
         /// </summary>
         public class LapData
         {
             public float LastLapTime { get; set; }
             public float CurrentLapTime { get; set; }
-            public float BestLapTime { get; set; }
-            public float Sector1Time { get; set; }
-            public float Sector2Time { get; set; }
+            public ushort Sector1TimeMilliseconds { get; set; }
+            public ushort Sector2TimeMilliseconds { get; set; }
+            public float BestLapTimeSeconds { get; set; }
+            public byte BestLapNumber {get; set;}
+            public ushort BestLapSector1TimeMilliseconds {get; set;}
+            public ushort BestLapSector2TimeMilliseconds {get; set;}
+            public ushort BestLapSector3TimeMilliseconds {get; set;}
+            public ushort BestOverallSector1TimeMilliseconds {get; set;}
+            public byte BestOverallSector1TimeLapNumber {get; set;}
+            public ushort BestOverallSector2TimeMilliseconds {get; set;}
+            public byte BestOverallSector2TimeLapNumber {get; set;}
+            public ushort BestOverallSector3TimeMilliseconds {get; set;}
+            public byte BestOverallSector3TimeLapNumber {get; set;}          
             public float LapDistance { get; set; }
             public float TotalDistance { get; set; }
             public float SafetyCarDelta { get; set; }
@@ -59,9 +69,25 @@ namespace Codemasters.F1_2020
 
                 ReturnInstance.LastLapTime = BitConverter.ToSingle(BAM.NextBytes(4), 0);
                 ReturnInstance.CurrentLapTime = BitConverter.ToSingle(BAM.NextBytes(4), 0);
-                ReturnInstance.BestLapTime = BitConverter.ToSingle(BAM.NextBytes(4), 0);
-                ReturnInstance.Sector1Time = BitConverter.ToSingle(BAM.NextBytes(4), 0);
-                ReturnInstance.Sector2Time = BitConverter.ToSingle(BAM.NextBytes(4), 0);
+
+                ReturnInstance.Sector1TimeMilliseconds = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+                ReturnInstance.Sector2TimeMilliseconds = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+
+
+                ReturnInstance.BestLapTimeSeconds = BitConverter.ToSingle(BAM.NextBytes(4), 0);
+                ReturnInstance.BestLapNumber = BAM.NextByte();
+
+                ReturnInstance.BestLapSector1TimeMilliseconds = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+                ReturnInstance.BestLapSector2TimeMilliseconds = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+                ReturnInstance.BestLapSector3TimeMilliseconds = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+
+                ReturnInstance.BestOverallSector1TimeMilliseconds = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+                ReturnInstance.BestOverallSector1TimeLapNumber = BAM.NextByte();
+                ReturnInstance.BestOverallSector2TimeMilliseconds = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+                ReturnInstance.BestOverallSector2TimeLapNumber = BAM.NextByte();
+                ReturnInstance.BestOverallSector3TimeMilliseconds = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+                ReturnInstance.BestOverallSector3TimeLapNumber = BAM.NextByte();
+
                 ReturnInstance.LapDistance = BitConverter.ToSingle(BAM.NextBytes(4), 0);
                 ReturnInstance.TotalDistance = BitConverter.ToSingle(BAM.NextBytes(4), 0);
                 ReturnInstance.SafetyCarDelta = BitConverter.ToSingle(BAM.NextBytes(4), 0);
