@@ -26,6 +26,8 @@ namespace Codemasters.F1_2020
         public MarshallZone[] MarshallZones { get; set; }
         public SafetyCarStatus CurrentSafetyCarStatus { get; set; }
         public bool IsNetworkGame { get; set; }
+        public byte NumberOfWeatherForecastSamples {get; set;}
+        public WeatherForecastSample[] WeatherForecastSamples {get; set;}
 
 
 
@@ -34,7 +36,7 @@ namespace Codemasters.F1_2020
             ByteArrayManager BAM = new ByteArrayManager(bytes);
 
             //Load header
-            base.LoadBytes(BAM.NextBytes(23));
+            base.LoadBytes(BAM.NextBytes(24));
 
             //Get weather
             byte nb = BAM.NextByte();
@@ -239,6 +241,18 @@ namespace Codemasters.F1_2020
             }
 
 
+            //Get number of weather forecast samples
+            NumberOfWeatherForecastSamples = BAM.NextByte();
+
+            //Get the next 20 weather forecast samples
+            List<WeatherForecastSample> wfss = new List<WeatherForecastSample>();
+            t = 0;
+            for (t=0;t<20;t++)
+            {
+                wfss.Add(WeatherForecastSample.Create(BAM.NextBytes(5)));
+            }
+            WeatherForecastSamples = wfss.ToArray();
+
         }
 
 
@@ -281,6 +295,120 @@ namespace Codemasters.F1_2020
                 }
 
                 return ReturnInstance;
+            }
+
+        }
+
+        public class WeatherForecastSample
+        {
+            public SessionType SessionTypeMode {get; set;}
+            public byte TimeOffSet {get; set;}
+            public WeatherCondition ForecastedWeatherCondition {get; set;}
+            public byte TrackTemperatureCelsius {get; set;}
+            public byte AirTemperatureCelsius {get; set;}
+
+
+            public static WeatherForecastSample Create(byte[] bytes)
+            {
+                WeatherForecastSample ToReturn = new WeatherForecastSample();
+                ByteArrayManager BAM = new ByteArrayManager(bytes);
+
+                //Get session type
+                byte nb = BAM.NextByte();
+                if (nb == 0)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Unknown;
+                }
+                else if (nb == 1)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Practice1;
+                }
+                else if (nb == 2)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Practice2;
+                }
+                else if (nb == 3)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Practice3;
+                }
+                else if (nb == 4)
+                {
+                    ToReturn.SessionTypeMode = SessionType.ShortPractice;
+                }
+                else if (nb == 5)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Qualifying1;
+                }
+                else if (nb == 6)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Qualifying2;
+                }
+                else if (nb == 7)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Qualifying3;
+                }
+                else if (nb == 8)
+                {
+                    ToReturn.SessionTypeMode = SessionType.ShortPractice;
+                }
+                else if (nb == 9)
+                {
+                    ToReturn.SessionTypeMode = SessionType.OneShotQualifying;
+                }
+                else if (nb == 10)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Race;
+                }
+                else if (nb == 11)
+                {
+                    ToReturn.SessionTypeMode = SessionType.Race2;
+                }
+                else if (nb == 12)
+                {
+                    ToReturn.SessionTypeMode = SessionType.TimeTrial;
+                }
+
+
+                //Get time offset
+                ToReturn.TimeOffSet = BAM.NextByte();
+
+                //Get weather
+                nb = BAM.NextByte();
+                if (nb == 0)
+                {
+                    ToReturn.ForecastedWeatherCondition = WeatherCondition.Clear;
+                }
+                else if (nb == 1)
+                {
+                    ToReturn.ForecastedWeatherCondition = WeatherCondition.LightClouds;
+                }
+                else if (nb == 2)
+                {
+                    ToReturn.ForecastedWeatherCondition = WeatherCondition.Overcast;
+                }
+                else if (nb == 3)
+                {
+                    ToReturn.ForecastedWeatherCondition = WeatherCondition.LightRain;
+                }
+                else if (nb == 4)
+                {
+                    ToReturn.ForecastedWeatherCondition = WeatherCondition.HeavyRain;
+                }
+                else if (nb == 5)
+                {
+                    ToReturn.ForecastedWeatherCondition = WeatherCondition.Storm;
+                }
+
+
+                //Get track temperature
+                ToReturn.TrackTemperatureCelsius = BAM.NextByte();
+
+                //Get air temperature
+                ToReturn.AirTemperatureCelsius = BAM.NextByte();
+
+
+
+                return ToReturn;
             }
 
         }

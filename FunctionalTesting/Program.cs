@@ -10,7 +10,7 @@ namespace FunctionalTesting
     {
         static void Main(string[] args)
         {
-            Stream s = System.IO.File.OpenRead("C:\\Users\\tihanewi\\Downloads\\Codemasters.F1_2020\\SampleData\\Australia_Practice_AlphaTauri.txt");
+            Stream s = System.IO.File.OpenRead("C:\\Users\\TaHan\\Downloads\\Codemasters.F1_2020\\SampleData\\Australia_Practice_AlphaTauri.txt");
             StreamReader sr = new StreamReader(s);
             JsonTextReader jtr = new JsonTextReader(sr);
             JsonSerializer js = new JsonSerializer();
@@ -18,17 +18,11 @@ namespace FunctionalTesting
 
             foreach (byte[] b in data)
             {
-                Packet p = new Packet();
-                p.LoadBytes(b);
-
-                Console.WriteLine(p.PacketFormat.ToString());
-                Console.WriteLine(p.GameMajorVersion.ToString());
-                Console.WriteLine(p.GameMinorVersion.ToString());
-                Console.WriteLine(p.PlayerCarIndex.ToString());
-                Console.WriteLine(p.SecondaryPlayerCarIndex.ToString());
-                Console.WriteLine(p.PacketType.ToString());
-                Console.WriteLine(p.UniqueSessionId.ToString());
-                Console.ReadLine();
+                PacketType pt = CodemastersToolkit.GetPacketType(b);
+                if (pt == PacketType.Session)
+                {
+                    
+                }
             }
         }
     }
