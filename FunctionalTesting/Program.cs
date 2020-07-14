@@ -19,15 +19,11 @@ namespace FunctionalTesting
             foreach (byte[] b in data)
             {
                 PacketType pt = CodemastersToolkit.GetPacketType(b);
-                if (pt == PacketType.CarTelemetry)
+                if (pt == PacketType.CarStatus)
                 {
-                    TelemetryPacket tp = new TelemetryPacket();
-                    tp.LoadBytes(b);
-                    foreach (TelemetryPacket.CarTelemetryData ctd in tp.FieldTelemetryData)
-                    {
-                        Console.WriteLine(ctd.Brake.ToString());
-                    }
-                    Console.ReadLine();
+                    CarStatusPacket csp = new CarStatusPacket();
+                    csp.LoadBytes(b);
+                    Console.WriteLine(csp.FieldCarStatusData[csp.PlayerCarIndex].EngineDamagePercent.ToString());
                 }
             }
         }

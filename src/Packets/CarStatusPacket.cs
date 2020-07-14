@@ -11,14 +11,14 @@ namespace Codemasters.F1_2020
         public override void LoadBytes(byte[] bytes)
         {
             ByteArrayManager bam = new ByteArrayManager(bytes);
-            base.LoadBytes(bam.NextBytes(23));
+            base.LoadBytes(bam.NextBytes(24));
 
 
             List<CarStatusData> csds = new List<CarStatusData>();
             int t = 1;
-            for (t = 1; t <= 20; t++)
+            for (t = 1; t <= 22; t++)
             {
-                csds.Add(CarStatusData.CreateFromBytes(bam.NextBytes(56)));
+                csds.Add(CarStatusData.CreateFromBytes(bam.NextBytes(60)));
             }
             FieldCarStatusData = csds.ToArray();
 
@@ -38,13 +38,16 @@ namespace Codemasters.F1_2020
             public ushort IdleRpm { get; set; }
             public byte MaxGears { get; set; }
             public bool DrsAllowed { get; set; }
+            public ushort DrsActivationDistance {get; set;} //New in F1 2020
             public WheelDataArray TyreWearPercentage { get; set; }
             public TyreCompound EquippedTyreCompound { get; set; }
             public byte EquippedVisualTyreCompoundId { get; set; }
+            public byte TyreAgeLaps {get; set;} //New in F1 2020
             public WheelDataArray TyreDamagePercentage { get; set; }
             public byte FrontLeftWingDamagePercent { get; set; }
             public byte FrontRightWingDamagePercent { get; set; }
             public byte RearWingDamagePercent { get; set; }
+            public bool DrsFailure {get; set;} //New in F1 2020
             public byte EngineDamagePercent { get; set; }
             public byte GearBoxDamagePercent { get; set; }
             public FiaFlag VehicleFiaFlag { get; set; }
@@ -156,6 +159,9 @@ namespace Codemasters.F1_2020
                     ToReturn.DrsAllowed = false;
                 }
 
+                //DRS activation distance
+                ToReturn.DrsActivationDistance = BitConverter.ToUInt16(bam.NextBytes(2), 0);
+
 
                 //Tyre Wear
                 ToReturn.TyreWearPercentage = new WheelDataArray();
@@ -198,6 +204,9 @@ namespace Codemasters.F1_2020
                 //Tyre visual compound
                 ToReturn.EquippedVisualTyreCompoundId = bam.NextByte();
 
+                //Tyre age in laps
+                ToReturn.TyreAgeLaps = bam.NextByte();
+
                 //Tyre damage
                 ToReturn.TyreDamagePercentage = new WheelDataArray();
                 ToReturn.TyreDamagePercentage.FrontLeft = Convert.ToSingle(bam.NextByte());
@@ -213,6 +222,17 @@ namespace Codemasters.F1_2020
 
                 //Rear wing damage
                 ToReturn.RearWingDamagePercent = bam.NextByte();
+
+                //DRS failure
+                nb = bam.NextByte();
+                if (nb == 0)
+                {
+                    ToReturn.DrsFailure = false;
+                }
+                else
+                {
+                    ToReturn.DrsFailure = true;
+                }
 
                 //Engine damage
                 ToReturn.EngineDamagePercent = bam.NextByte();
