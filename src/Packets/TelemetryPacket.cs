@@ -136,10 +136,10 @@ namespace Codemasters.F1_2020
                 ReturnInstance.TyrePressure.FrontRight = BitConverter.ToSingle(BAM.NextBytes(4), 0);
 
                 //Get surface type
-                ReturnInstance.SurfaceType_RearLeft = CodemastersToolkit.GetSurfaceTypeFromSurfaceTypeId(BAM.NextByte(), Game.F1_2019);
-                ReturnInstance.SurfaceType_RearRight = CodemastersToolkit.GetSurfaceTypeFromSurfaceTypeId(BAM.NextByte(), Game.F1_2019);
-                ReturnInstance.SurfaceType_FrontLeft = CodemastersToolkit.GetSurfaceTypeFromSurfaceTypeId(BAM.NextByte(), Game.F1_2019);
-                ReturnInstance.SurfaceType_FrontRight = CodemastersToolkit.GetSurfaceTypeFromSurfaceTypeId(BAM.NextByte(), Game.F1_2019);
+                ReturnInstance.SurfaceType_RearLeft = CodemastersToolkit.GetSurfaceTypeFromSurfaceTypeId(BAM.NextByte());
+                ReturnInstance.SurfaceType_RearRight = CodemastersToolkit.GetSurfaceTypeFromSurfaceTypeId(BAM.NextByte());
+                ReturnInstance.SurfaceType_FrontLeft = CodemastersToolkit.GetSurfaceTypeFromSurfaceTypeId(BAM.NextByte());
+                ReturnInstance.SurfaceType_FrontRight = CodemastersToolkit.GetSurfaceTypeFromSurfaceTypeId(BAM.NextByte());
 
                 return ReturnInstance;
             }

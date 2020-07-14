@@ -336,62 +336,55 @@ namespace Codemasters.F1_2020
                 return tr;
             }
 
-            public static SurfaceType GetSurfaceTypeFromSurfaceTypeId(byte id, Game game_)
+            public static SurfaceType GetSurfaceTypeFromSurfaceTypeId(byte id)
             {
-                if (game_ == Game.F1_2019)
+                if (id == 0)
                 {
-                    if (id == 0)
-                    {
-                        return SurfaceType.Tarmac;
-                    }
-                    else if (id == 1)
-                    {
-                        return SurfaceType.RumbleStrip;
-                    }
-                    else if (id == 2)
-                    {
-                        return SurfaceType.Concrete;
-                    }
-                    else if (id == 3)
-                    {
-                        return SurfaceType.Rock;
-                    }
-                    else if (id == 4)
-                    {
-                        return SurfaceType.Gravel;
-                    }
-                    else if (id == 5)
-                    {
-                        return SurfaceType.Mud;
-                    }
-                    else if (id == 6)
-                    {
-                        return SurfaceType.Sand;
-                    }
-                    else if (id == 7)
-                    {
-                        return SurfaceType.Grass;
-                    }
-                    else if (id == 8)
-                    {
-                        return SurfaceType.Water;
-                    }
-                    else if (id == 9)
-                    {
-                        return SurfaceType.Cobblestone;
-                    }
-                    else if (id == 10)
-                    {
-                        return SurfaceType.Metal;
-                    }
-                    else if (id == 11)
-                    {
-                        return SurfaceType.Ridged;
-                    }
-                    else
-                    {
-                        return SurfaceType.Unknown;
-                    }
+                    return SurfaceType.Tarmac;
+                }
+                else if (id == 1)
+                {
+                    return SurfaceType.RumbleStrip;
+                }
+                else if (id == 2)
+                {
+                    return SurfaceType.Concrete;
+                }
+                else if (id == 3)
+                {
+                    return SurfaceType.Rock;
+                }
+                else if (id == 4)
+                {
+                    return SurfaceType.Gravel;
+                }
+                else if (id == 5)
+                {
+                    return SurfaceType.Mud;
+                }
+                else if (id == 6)
+                {
+                    return SurfaceType.Sand;
+                }
+                else if (id == 7)
+                {
+                    return SurfaceType.Grass;
+                }
+                else if (id == 8)
+                {
+                    return SurfaceType.Water;
+                }
+                else if (id == 9)
+                {
+                    return SurfaceType.Cobblestone;
+                }
+                else if (id == 10)
+                {
+                    return SurfaceType.Metal;
+                }
+                else if (id == 11)
+                {
+                    return SurfaceType.Ridged;
                 }
                 else
                 {
