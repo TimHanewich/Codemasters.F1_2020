@@ -8,42 +8,49 @@ namespace Codemasters.F1_2020
         {
             public static PacketType GetPacketType(byte[] bytes)
             {
-                byte identifier = bytes[5];
-                if (identifier == 0)
+                if (bytes.Length == 1464)
                 {
                     return PacketType.Motion;
                 }
-                else if (identifier == 1)
+                else if (bytes.Length == 251)
                 {
                     return PacketType.Session;
                 }
-                else if (identifier == 2)
+                else if (bytes.Length == 1190)
                 {
                     return PacketType.Lap;
                 }
-                else if (identifier == 3)
+                else if (bytes.Length == 35)
                 {
                     return PacketType.Event;
                 }
-                else if (identifier == 4)
+                else if (bytes.Length == 1213)
                 {
                     return PacketType.Participants;
                 }
-                else if (identifier == 5)
+                else if (bytes.Length == 1102)
                 {
                     return PacketType.CarSetup;
                 }
-                else if (identifier == 6)
+                else if (bytes.Length == 1307)
                 {
                     return PacketType.CarTelemetry;
                 }
-                else if (identifier == 7)
+                else if (bytes.Length == 1344)
                 {
                     return PacketType.CarStatus;
                 }
+                else if (bytes.Length == 839)
+                {
+                    return PacketType.FinalClassification;
+                }
+                else if (bytes.Length == 1169)
+                {
+                    return PacketType.LobbyInfo;
+                }
                 else
                 {
-                    throw new Exception("Unable to recognize packet type.");
+                    throw new Exception("Packet type not recognized.");
                 }
             }
 
