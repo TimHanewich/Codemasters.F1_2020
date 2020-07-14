@@ -7,21 +7,35 @@ namespace Codemasters.F1_2020
     public class TelemetryPacket : Packet
     {
         public CarTelemetryData[] FieldTelemetryData { get; set; }
+        public int ButtonStatus {get; set;}
+        public byte MfdPanelIndex {get; set;} //New to f1 2020. This should be an enum, but will do that later.
+        public byte SecondaryPlayerMfdPanelIndex {get; set;}
+        public byte SuggestedGear {get; set;}
 
         public override void LoadBytes(byte[] bytes)
         {
             ByteArrayManager BAM = new ByteArrayManager(bytes);
-            base.LoadBytes(BAM.NextBytes(23)); //Load header
+            base.LoadBytes(BAM.NextBytes(24)); //Load header
 
             int t = 0;
             List<CarTelemetryData> TelDatas = new List<CarTelemetryData>();
-            for (t = 1; t <= 20; t++)
+            for (t = 1; t <= 22; t++)
             {
-                TelDatas.Add(CarTelemetryData.Create(BAM.NextBytes(66)));
+                TelDatas.Add(CarTelemetryData.Create(BAM.NextBytes(58)));
             }
             FieldTelemetryData = TelDatas.ToArray();
 
-            //I skipped the field "ButtonStatus".  Doesn't seem needed.
+            //Button status
+            ButtonStatus = BitConverter.ToInt32(BAM.NextBytes(4), 0);
+
+            //MFD Panel Index
+            MfdPanelIndex = BAM.NextByte();
+
+            //Secndary player mfd panel index
+            SecondaryPlayerMfdPanelIndex = BAM.NextByte();
+
+            //Suggested gear
+            SuggestedGear = BAM.NextByte();
 
         }
 
@@ -99,17 +113,17 @@ namespace Codemasters.F1_2020
 
                 //get tyre surface temperature
                 ReturnInstance.TyreSurfaceTemperature = new WheelDataArray();
-                ReturnInstance.TyreSurfaceTemperature.RearLeft = (float)BitConverter.ToUInt16(BAM.NextBytes(2), 0);
-                ReturnInstance.TyreSurfaceTemperature.RearRight = (float)BitConverter.ToUInt16(BAM.NextBytes(2), 0);
-                ReturnInstance.TyreSurfaceTemperature.FrontLeft = (float)BitConverter.ToUInt16(BAM.NextBytes(2), 0);
-                ReturnInstance.TyreSurfaceTemperature.FrontRight = (float)BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+                ReturnInstance.TyreSurfaceTemperature.RearLeft = (float)BAM.NextByte();
+                ReturnInstance.TyreSurfaceTemperature.RearRight = (float)BAM.NextByte();
+                ReturnInstance.TyreSurfaceTemperature.FrontLeft = (float)BAM.NextByte();
+                ReturnInstance.TyreSurfaceTemperature.FrontRight = (float)BAM.NextByte();
 
                 //get tyre Inner Temperature
                 ReturnInstance.TyreInnerTemperature = new WheelDataArray();
-                ReturnInstance.TyreInnerTemperature.RearLeft = (float)BitConverter.ToUInt16(BAM.NextBytes(2), 0);
-                ReturnInstance.TyreInnerTemperature.RearRight = (float)BitConverter.ToUInt16(BAM.NextBytes(2), 0);
-                ReturnInstance.TyreInnerTemperature.FrontLeft = (float)BitConverter.ToUInt16(BAM.NextBytes(2), 0);
-                ReturnInstance.TyreInnerTemperature.FrontRight = (float)BitConverter.ToUInt16(BAM.NextBytes(2), 0);
+                ReturnInstance.TyreInnerTemperature.RearLeft = (float)BAM.NextByte();
+                ReturnInstance.TyreInnerTemperature.RearRight = (float)BAM.NextByte();
+                ReturnInstance.TyreInnerTemperature.FrontLeft = (float)BAM.NextByte();
+                ReturnInstance.TyreInnerTemperature.FrontRight = (float)BAM.NextByte();
 
                 //Get engine temperature
                 ReturnInstance.EngineTemperature = BitConverter.ToUInt16(BAM.NextBytes(2), 0);
