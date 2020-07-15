@@ -10,7 +10,7 @@ namespace FunctionalTesting
     {
         static void Main(string[] args)
         {
-            Stream s = System.IO.File.OpenRead("C:\\Users\\tihanewi\\Downloads\\Codemasters.F1_2020\\SampleData\\Australia_Race_AlphaTauri.txt");
+            Stream s = System.IO.File.OpenRead("C:\\Users\\TaHan\\Downloads\\Telemetry 7-14-2020 542a12b8-0ccc-4ce2-8975-9d5d8f9381a9.json");
             StreamReader sr = new StreamReader(s);
             JsonTextReader jtr = new JsonTextReader(sr);
             JsonSerializer js = new JsonSerializer();
