@@ -10,24 +10,21 @@ namespace FunctionalTesting
     {
         static void Main(string[] args)
         {
-            Stream s = System.IO.File.OpenRead("C:\\Users\\TaHan\\Downloads\\Telemetry 7-14-2020 542a12b8-0ccc-4ce2-8975-9d5d8f9381a9.json");
+            Stream s = System.IO.File.OpenRead("C:\\Users\\tihanewi\\Downloads\\Codemasters.F1_2020\\SampleData\\Australia_Practice_AlphaTauri.txt");
             StreamReader sr = new StreamReader(s);
             JsonTextReader jtr = new JsonTextReader(sr);
             JsonSerializer js = new JsonSerializer();
             List<byte[]> data = js.Deserialize<List<byte[]>>(jtr);
 
-            foreach (byte[] b in data)
+            Console.WriteLine("Converting...");
+            Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(data);
+            foreach (Packet p in packets)
             {
-                PacketType pt = CodemastersToolkit.GetPacketType(b);
-                if (pt == PacketType.FinalClassification)
+                if (p.PacketType == PacketType.CarTelemetry)
                 {
-                    Console.WriteLine("Got a final class packet");
-                    FinalClassificationPacket fcp = new FinalClassificationPacket();
-                    fcp.LoadBytes(b);
-                    foreach (FinalClassificationPacket.FinalClassificationData fcd in fcp.FieldClassificationData)
-                    {
-                        Console.WriteLine(fcd.NumberOfLaps.ToString());
-                    }
+                    Packet rp = p.GetRelatedPacket(packets, PacketType.CarStatus);
+                    Console.WriteLine(rp.GetType().ToString());
+                    Console.ReadLine();
                 }
             }
         }

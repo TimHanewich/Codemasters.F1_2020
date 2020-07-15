@@ -95,6 +95,14 @@ namespace Codemasters.F1_2020
             {
                 PacketType = PacketType.CarStatus;
             }
+            else if (PackVer == 8)
+            {
+                PacketType = PacketType.FinalClassification;
+            }
+            else if (PackVer == 9)
+            {
+                PacketType = PacketType.LobbyInfo;
+            }
 
 
             //Get unique session ID
@@ -159,6 +167,5 @@ namespace Codemasters.F1_2020
             return winner;
 
         }
-
     }
 }

@@ -417,17 +417,41 @@ namespace Codemasters.F1_2020
                         sp.LoadBytes(b);
                         Packets.Add(sp);
                     }
+                    else if (pt == PacketType.Event)
+                    {
+                        //Event packet not complete yet
+                    }
                     else if (pt == PacketType.Participants)
                     {
                         ParticipantPacket sp = new ParticipantPacket();
                         sp.LoadBytes(b);
                         Packets.Add(sp);
                     }
+                    else if (pt == PacketType.CarSetup)
+                    {
+                        //Car setup packet not complete yet
+                    }
                     else if (pt == PacketType.CarTelemetry)
                     {
                         TelemetryPacket sp = new TelemetryPacket();
                         sp.LoadBytes(b);
                         Packets.Add(sp);
+                    }
+                    else if (pt == PacketType.CarStatus)
+                    {
+                        CarStatusPacket csp = new CarStatusPacket();
+                        csp.LoadBytes(b);
+                        Packets.Add(csp);
+                    }
+                    else if (pt == PacketType.FinalClassification)
+                    {
+                        FinalClassificationPacket fcp = new FinalClassificationPacket();
+                        fcp.LoadBytes(b);
+                        Packets.Add(fcp);
+                    }
+                    else if (pt == PacketType.LobbyInfo)
+                    {
+                        //Lobby info packet not done yet.
                     }
                 }
 
