@@ -18,15 +18,24 @@ namespace FunctionalTesting
 
             Console.WriteLine("Converting...");
             Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(data);
+            List<string> ToWrite = new List<string>();
             foreach (Packet p in packets)
             {
                 if (p.PacketType == PacketType.CarTelemetry)
                 {
-                    Packet rp = p.GetRelatedPacket(packets, PacketType.CarStatus);
-                    Console.WriteLine(rp.GetType().ToString());
-                    Console.ReadLine();
+                    MotionPacket mp = (MotionPacket)p.GetRelatedPacket(packets, PacketType.Motion);
+                    MotionPacket.CarMotionData cmd = mp.FieldMotionData[mp.PlayerCarIndex];
+                    ToWrite.Add(mp.SessionTime.ToString() + "," + cmd.gForceLateral.ToString() + "," + cmd.gForceLongitudinal.ToString() + "," + cmd.gForceVertical.ToString());
                 }
             }
+
+            string all = "";
+            foreach (string ss in ToWrite)
+            {
+                all = all + ss + Environment.NewLine;
+            }
+
+            System.IO.File.WriteAllText("C:\\Users\\tihanewi\\Downloads\\test.csv", all);
         }
     }
 }
