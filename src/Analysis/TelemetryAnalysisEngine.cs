@@ -354,6 +354,7 @@ namespace Codemasters.F1_2020.Analysis
                 row.Values.Add(csd.RearWingDamagePercent.ToString());
                 row.Values.Add(csd.DrsFailure.ToString());
                 row.Values.Add(csd.EngineDamagePercent.ToString());
+                row.Values.Add(csd.GearBoxDamagePercent.ToString());
                 row.Values.Add(csd.VehicleFiaFlag.ToString());
                 row.Values.Add(csd.ErsStoredEnergyJoules.ToString());
                 row.Values.Add(csd.SelectedErsDeployMode.ToString());
