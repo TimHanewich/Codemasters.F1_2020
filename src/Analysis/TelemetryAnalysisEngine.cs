@@ -44,6 +44,9 @@ namespace Codemasters.F1_2020.Analysis
             //Write headers
             DataRow dr_header = csv.AddNewRow();
 
+            //Time
+            dr_header.Values.Add("Session Time");
+
             //Motion packet
             dr_header.Values.Add("Position X");
             dr_header.Values.Add("Position Y");
@@ -186,6 +189,9 @@ namespace Codemasters.F1_2020.Analysis
             {
                 //Create the new row
                 DataRow row = csv.AddNewRow();
+
+                //Write the session time
+                row.Values.Add(frame.Telemetry.SessionTime.ToString());
 
                 //Write Write motion data
                 MotionPacket.CarMotionData cmd = frame.Motion.FieldMotionData[driver_index];
