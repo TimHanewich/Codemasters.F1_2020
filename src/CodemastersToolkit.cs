@@ -492,7 +492,7 @@ namespace Codemasters.F1_2020
                 }
                 else if (t == Team.AlphaTauri)
                 {
-                    c = Color.FromArgb(255, 70, 155, 255);
+                    c = Color.FromArgb(255, 255, 255, 255);
                 }
                 else if (t == Team.Williams)
                 {
