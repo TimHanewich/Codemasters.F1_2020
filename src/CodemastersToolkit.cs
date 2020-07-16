@@ -261,68 +261,66 @@ namespace Codemasters.F1_2020
 
             }
 
-            public static Team GetTeamFromTeamId(byte id, Game game_)
+            public static Team GetTeamFromTeamId(byte id)
             {
                 Dictionary<byte, Team> Dict = new Dictionary<byte, Team>();
 
-                if (game_ == Game.F1_2019)
-                {
-                    Dict.Add(0, Team.Mercedes);
-                    Dict.Add(1, Team.Ferrari);
-                    Dict.Add(2, Team.RedBullRacing);
-                    Dict.Add(3, Team.Williams);
-                    Dict.Add(4, Team.RacingPoint);
-                    Dict.Add(5, Team.Renault);
-                    Dict.Add(6, Team.ToroRosso);
-                    Dict.Add(7, Team.Haas);
-                    Dict.Add(8, Team.McLaren);
-                    Dict.Add(9, Team.AlfaRomeo);
-                    Dict.Add(10, Team.McLaren1988);
-                    Dict.Add(11, Team.McLaren1991);
-                    Dict.Add(12, Team.Williams1992);
-                    Dict.Add(13, Team.Ferrari1995);
-                    Dict.Add(14, Team.Williams1996);
-                    Dict.Add(15, Team.McLaren1998);
-                    Dict.Add(16, Team.Ferrari2002);
-                    Dict.Add(17, Team.Ferrari2004);
-                    Dict.Add(18, Team.Renault2006);
-                    Dict.Add(19, Team.Ferrari2007);
-                    Dict.Add(21, Team.RedBull2010);
-                    Dict.Add(22, Team.Ferrari1976);
-                    Dict.Add(23, Team.ARTGrandPrix);
-                    Dict.Add(24, Team.CamposVexatecRacing);
-                    Dict.Add(25, Team.Carlin);
-                    Dict.Add(26, Team.CharouzRacingSystem);
-                    Dict.Add(27, Team.DAMS);
-                    Dict.Add(28, Team.RussianTime);
-                    Dict.Add(29, Team.MPMotorsport);
-                    Dict.Add(30, Team.Pertamina);
-                    Dict.Add(31, Team.McLaren1990);
-                    Dict.Add(32, Team.Trident);
-                    Dict.Add(33, Team.BWTArden);
-                    Dict.Add(34, Team.McLaren1976);
-                    Dict.Add(35, Team.Lotus1972);
-                    Dict.Add(36, Team.Ferrari1979);
-                    Dict.Add(37, Team.McLaren1982);
-                    Dict.Add(38, Team.Williams2003);
-                    Dict.Add(39, Team.Brawn2009);
-                    Dict.Add(40, Team.Lotus1978);
-                    Dict.Add(42, Team.ArtGP19);
-                    Dict.Add(43, Team.Campos19);
-                    Dict.Add(44, Team.Carlin19);
-                    Dict.Add(45, Team.SauberJuniorCharouz19);
-                    Dict.Add(46, Team.Dams19);
-                    Dict.Add(47, Team.UniVirtuosi19);
-                    Dict.Add(48, Team.MPMotorsport19);
-                    Dict.Add(49, Team.Prema19);
-                    Dict.Add(50, Team.Trident19);
-                    Dict.Add(51, Team.Arden19);
-                    Dict.Add(63, Team.Ferrari1990);
-                    Dict.Add(64, Team.McLaren2010);
-                    Dict.Add(65, Team.Ferrari2010);
-
-
-                }
+                Dict.Add(0, Team.Mercedes);
+                Dict.Add(1, Team.Ferrari);
+                Dict.Add(2, Team.RedBullRacing);
+                Dict.Add(3, Team.Williams);
+                Dict.Add(4, Team.RacingPoint);
+                Dict.Add(5, Team.Renault);
+                Dict.Add(6, Team.AlphaTauri);
+                Dict.Add(7, Team.Haas);
+                Dict.Add(8, Team.McLaren);
+                Dict.Add(9, Team.AlfaRomeo);
+                Dict.Add(10, Team.McLaren1988);
+                Dict.Add(11, Team.McLaren1991);
+                Dict.Add(12, Team.Williams1992);
+                Dict.Add(13, Team.Ferrari1995);
+                Dict.Add(14, Team.Williams1996);
+                Dict.Add(15, Team.McLaren1998);
+                Dict.Add(16, Team.Ferrari2002);
+                Dict.Add(17, Team.Ferrari2004);
+                Dict.Add(18, Team.Renault2006);
+                Dict.Add(19, Team.Ferrari2007);
+                Dict.Add(20, Team.McLaren2008);
+                Dict.Add(21, Team.RedBull2010);
+                Dict.Add(22, Team.Ferrari1976);
+                Dict.Add(23, Team.ARTGrandPrix);
+                Dict.Add(24, Team.CamposVexatecRacing);
+                Dict.Add(25, Team.Carlin);
+                Dict.Add(26, Team.CharouzRacingSystem);
+                Dict.Add(27, Team.DAMS);
+                Dict.Add(28, Team.RussianTime);
+                Dict.Add(29, Team.MPMotorsport);
+                Dict.Add(30, Team.Pertamina);
+                Dict.Add(31, Team.McLaren1990);
+                Dict.Add(32, Team.Trident);
+                Dict.Add(33, Team.BWTArden);
+                Dict.Add(34, Team.McLaren1976);
+                Dict.Add(35, Team.Lotus1972);
+                Dict.Add(36, Team.Ferrari1979);
+                Dict.Add(37, Team.McLaren1982);
+                Dict.Add(38, Team.Williams2003);
+                Dict.Add(39, Team.Brawn2009);
+                Dict.Add(40, Team.Lotus1978);
+                Dict.Add(41, Team.F1GenericCar);
+                Dict.Add(42, Team.ArtGP19);
+                Dict.Add(43, Team.Campos19);
+                Dict.Add(44, Team.Carlin19);
+                Dict.Add(45, Team.SauberJuniorCharouz19);
+                Dict.Add(46, Team.Dams19);
+                Dict.Add(47, Team.UniVirtuosi19);
+                Dict.Add(48, Team.MPMotorsport19);
+                Dict.Add(49, Team.Prema19);
+                Dict.Add(50, Team.Trident19);
+                Dict.Add(51, Team.Arden19);
+                Dict.Add(53, Team.Benetton1994);
+                Dict.Add(55, Team.Ferrari2000);
+                Dict.Add(56, Team.Jordan1991);
+                Dict.Add(255, Team.MyTeam);
 
                 Team tr = Team.Unknown;
                 foreach (KeyValuePair<byte, Team> kvp in Dict)

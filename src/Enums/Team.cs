@@ -11,7 +11,7 @@ namespace Codemasters.F1_2020
         Williams,
         RacingPoint,
         Renault,
-        ToroRosso,
+        AlphaTauri,
         Haas,
         McLaren,
         AlfaRomeo,
@@ -58,6 +58,13 @@ namespace Codemasters.F1_2020
         Ferrari1990,
         McLaren2010,
         Ferrari2010,
+        McLaren2008,
+        F1GenericCar,
+        Benetton1994,
+        Ferrari2000,
+        Jordan1991,
+        MyTeam
+        
 
     }
 }
