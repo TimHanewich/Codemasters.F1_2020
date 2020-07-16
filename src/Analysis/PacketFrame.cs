@@ -84,6 +84,5 @@ namespace Codemasters.F1_2020.Analysis
             }
             return ToReturn.ToArray();
         }
-    
     }
 }
