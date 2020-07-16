@@ -490,7 +490,7 @@ namespace Codemasters.F1_2020
                 {
                     c = Color.FromArgb(255, 220, 0, 0);
                 }
-                else if (t == Team.ToroRosso)
+                else if (t == Team.AlphaTauri)
                 {
                     c = Color.FromArgb(255, 70, 155, 255);
                 }

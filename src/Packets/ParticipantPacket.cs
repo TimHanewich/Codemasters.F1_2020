@@ -57,7 +57,7 @@ namespace Codemasters.F1_2020
                 ReturnInstance.PilotingDriver = CodemastersToolkit.GetDriverFromDriverId(BAM.NextByte(), Game.F1_2019);
 
                 //Get Team
-                ReturnInstance.ManufacturingTeam = CodemastersToolkit.GetTeamFromTeamId(BAM.NextByte(), Game.F1_2019);
+                ReturnInstance.ManufacturingTeam = CodemastersToolkit.GetTeamFromTeamId(BAM.NextByte());
 
                 //Get race number
                 ReturnInstance.CarRaceNumber = BAM.NextByte();
