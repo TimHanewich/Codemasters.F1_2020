@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Codemasters.F1_2020.Analysis;
 
 namespace Codemasters.F1_2020
 {
@@ -608,6 +609,15 @@ namespace Codemasters.F1_2020
                 float remaining = seconds - (number_of_minutes * 60);
                 string s = number_of_minutes.ToString() + ":" + remaining.ToString("#00.000");
                 return s;
+            }
+        
+            public static float DistanceBetweenTwoPoints(TrackLocation loc1, TrackLocation loc2)
+            {
+                float x_2 = (float)Math.Pow(loc2.PositionX - loc1.PositionX, 2);
+                float y_2 = (float)Math.Pow(loc2.PositionY - loc1.PositionY, 2);
+                float z_2 = (float)Math.Pow(loc2.PositionZ - loc1.PositionZ, 2);
+                float dist = (float)Math.Sqrt(x_2 + y_2 + z_2);
+                return dist;
             }
         }
 
