@@ -3,7 +3,7 @@ Codemasters.F1_2020
 A package of resources for deserializing and analyzing UDP telemetry data from the F1 2020 video game by Codemasters.
 ------
 
-The F1 2020 video game will provide to you a UDP data package in the form of a byte array ("byte[]"). There are several different types of data packets that the game will broadcast. Import the following namespace to use the basic resources for reading data:
+The F1 2020 video game will provide to you a UDP data package in the form of a byte array (`byte[]`). There are several different types of data packets that the game will broadcast. Import the following namespace to use the basic resources for reading data:
 
     using Codemasters.F1_2020;
 
@@ -26,7 +26,7 @@ To tell what type of packet any array of bytes that was provided to you is, use 
     PacketType pt = CodemastersToolkit.GetPacketType(bytes);
     Console.WriteLine(pt.ToString());
 
-Console output of the above: `CarTelemetry`  
+Console output of the above: "CarTelemetry"  
 Since we know that this particular data package is a telemetry packet, we can create a telemetry package:
 
     TelemetryPacket tp = new TelemetryPacket();
@@ -40,4 +40,26 @@ As an exmaple, the below code will print the throttle pressure that every driver
         Console.WriteLine(ctd.Throttle.ToString());
     }
 
-Many of the packets follow a similar format as is seen above with the `TelemetryPacket`.
+Many of the packets follow a similar format as is seen above with the `TelemetryPacket`.  
+
+### Converting all telemetry to packets  
+You can convert all of the byte array packages that you received. Example:  
+
+    List<byte[]> telemetry;
+    Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(telemetry);
+
+You can then convert each packet from the returned array of packets. For example, converting a `Packet` to the `TelemetryPacket`:
+
+    foreach (Packet p in packets)
+    {
+        if (p.PacketType == PacketType.CarTelemetry)
+        {
+            TelemetryPacket telpack = (TelemetryPacket)p;
+        }
+    }
+
+### Getting a related packet
+You may need to, for example, find the accompanying `CarStatusPacket` for a particular `TelemetryPacket`. To do this:
+
+    TelemetryPacket telpack;
+    CarStatusPacket csp = (CarStatusPacket)telpack.GetRelatedPacket(packets, PacketType.CarStatus);

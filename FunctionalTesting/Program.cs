@@ -18,26 +18,6 @@ namespace FunctionalTesting
             JsonSerializer js = new JsonSerializer();
             List<byte[]> data = js.Deserialize<List<byte[]>>(jtr);
 
-
-            //EXAMPLE
-
-
-            byte[] bytes = data[5];
-            PacketType pt = CodemastersToolkit.GetPacketType(bytes);
-            
-
-            TelemetryPacket tp = new TelemetryPacket();
-            tp.LoadBytes(bytes);
-
-            foreach (TelemetryPacket.CarTelemetryData ctd in tp.FieldTelemetryData)
-            {
-                Console.WriteLine(ctd.Throttle.ToString());
-            }
-
-
-            //END EXAMPLE
-            Console.ReadLine();
-
             HanewichTimer ht = new HanewichTimer();
             ht.StartTimer();
 
