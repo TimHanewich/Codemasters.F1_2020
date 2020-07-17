@@ -59,106 +59,114 @@ namespace Codemasters.F1_2020
             {
                 Track ReturnTrack = Track.Unknown;
 
-                    if (id == 0)
-                    {
-                        ReturnTrack = Track.Melbourne;
-                    }
-                    else if (id == 1)
-                    {
-                        ReturnTrack = Track.PaulRicard;
-                    }
-                    else if (id == 2)
-                    {
-                        ReturnTrack = Track.Shanghai;
-                    }
-                    else if (id == 3)
-                    {
-                        ReturnTrack = Track.Sakhir;
-                    }
-                    else if (id == 4)
-                    {
-                        ReturnTrack = Track.Catalunya;
-                    }
-                    else if (id == 5)
-                    {
-                        ReturnTrack = Track.Monaco;
-                    }
-                    else if (id == 6)
-                    {
-                        ReturnTrack = Track.Montreal;
-                    }
-                    else if (id == 7)
-                    {
-                        ReturnTrack = Track.Silverstone;
-                    }
-                    else if (id == 8)
-                    {
-                        ReturnTrack = Track.Hockenheim;
-                    }
-                    else if (id == 9)
-                    {
-                        ReturnTrack = Track.Hungaroring;
-                    }
-                    else if (id == 10)
-                    {
-                        ReturnTrack = Track.Spa;
-                    }
-                    else if (id == 11)
-                    {
-                        ReturnTrack = Track.Monza;
-                    }
-                    else if (id == 12)
-                    {
-                        ReturnTrack = Track.Singapore;
-                    }
-                    else if (id == 13)
-                    {
-                        ReturnTrack = Track.Suzuka;
-                    }
-                    else if (id == 14)
-                    {
-                        ReturnTrack = Track.AbuDhabi;
-                    }
-                    else if (id == 15)
-                    {
-                        ReturnTrack = Track.Texas;
-                    }
-                    else if (id == 16)
-                    {
-                        ReturnTrack = Track.Brazil;
-                    }
-                    else if (id == 17)
-                    {
-                        ReturnTrack = Track.Austria;
-                    }
-                    else if (id == 18)
-                    {
-                        ReturnTrack = Track.Sochi;
-                    }
-                    else if (id == 19)
-                    {
-                        ReturnTrack = Track.Mexico;
-                    }
-                    else if (id == 20)
-                    {
-                        ReturnTrack = Track.Baku;
-                    }
-                    else if (id == 21)
-                    {
-                        ReturnTrack = Track.SakhirShort;
-                    }
-                    else if (id == 22)
-                    {
-                        ReturnTrack = Track.SilverstoneShort;
-                    }
-                    else if (id == 23)
-                    {
-                        ReturnTrack = Track.TexasShort;
-                    }
-                    else if (id == 24)
-                    {
-                        ReturnTrack = Track.SuzukaShort;
-                    }
+                if (id == 0)
+                {
+                    ReturnTrack = Track.Melbourne;
+                }
+                else if (id == 1)
+                {
+                    ReturnTrack = Track.PaulRicard;
+                }
+                else if (id == 2)
+                {
+                    ReturnTrack = Track.Shanghai;
+                }
+                else if (id == 3)
+                {
+                    ReturnTrack = Track.Sakhir;
+                }
+                else if (id == 4)
+                {
+                    ReturnTrack = Track.Catalunya;
+                }
+                else if (id == 5)
+                {
+                    ReturnTrack = Track.Monaco;
+                }
+                else if (id == 6)
+                {
+                    ReturnTrack = Track.Montreal;
+                }
+                else if (id == 7)
+                {
+                    ReturnTrack = Track.Silverstone;
+                }
+                else if (id == 8)
+                {
+                    ReturnTrack = Track.Hockenheim;
+                }
+                else if (id == 9)
+                {
+                    ReturnTrack = Track.Hungaroring;
+                }
+                else if (id == 10)
+                {
+                    ReturnTrack = Track.Spa;
+                }
+                else if (id == 11)
+                {
+                    ReturnTrack = Track.Monza;
+                }
+                else if (id == 12)
+                {
+                    ReturnTrack = Track.Singapore;
+                }
+                else if (id == 13)
+                {
+                    ReturnTrack = Track.Suzuka;
+                }
+                else if (id == 14)
+                {
+                    ReturnTrack = Track.AbuDhabi;
+                }
+                else if (id == 15)
+                {
+                    ReturnTrack = Track.Texas;
+                }
+                else if (id == 16)
+                {
+                    ReturnTrack = Track.Brazil;
+                }
+                else if (id == 17)
+                {
+                    ReturnTrack = Track.Austria;
+                }
+                else if (id == 18)
+                {
+                    ReturnTrack = Track.Sochi;
+                }
+                else if (id == 19)
+                {
+                    ReturnTrack = Track.Mexico;
+                }
+                else if (id == 20)
+                {
+                    ReturnTrack = Track.Baku;
+                }
+                else if (id == 21)
+                {
+                    ReturnTrack = Track.SakhirShort;
+                }
+                else if (id == 22)
+                {
+                    ReturnTrack = Track.SilverstoneShort;
+                }
+                else if (id == 23)
+                {
+                    ReturnTrack = Track.TexasShort;
+                }
+                else if (id == 24)
+                {
+                    ReturnTrack = Track.SuzukaShort;
+                }
+                else if (id == 25)
+                {
+                    ReturnTrack = Track.Hanoi;
+                }
+                else if (id == 26)
+                {
+                    ReturnTrack = Track.Zandvoort;
+                }
 
                 return ReturnTrack;
             }

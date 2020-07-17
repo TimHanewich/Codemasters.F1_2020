@@ -4,7 +4,6 @@ namespace Codemasters.F1_2020
 {
     public enum Track
     {
-        Unknown,
         Melbourne,
         PaulRicard,
         Shanghai,
@@ -29,6 +28,10 @@ namespace Codemasters.F1_2020
         SakhirShort,
         SilverstoneShort,
         TexasShort,
-        SuzukaShort
+        SuzukaShort,
+        Hanoi,
+        Zandvoort,
+
+        Unknown
     }
 }
