@@ -607,6 +607,14 @@ namespace Codemasters.F1_2020
                 {
                     s = "L. Stroll";
                 }
+                else if (d == Driver.EstebanOcon)
+                {
+                    s = "E. Ocon";
+                }
+                else if (d == Driver.NicholasLatifi)
+                {
+                    s = "N. Latifi";
+                }
 
                 return s;
             }

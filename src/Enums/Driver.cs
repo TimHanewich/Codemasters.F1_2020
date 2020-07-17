@@ -16,6 +16,7 @@ namespace Codemasters.F1_2020
         SebastianVettel,
         SergioPerez,
         ValtteriBottas,
+        EstebanOcon,
         LanceStroll,
         ArronBarnes,
         MartinGiles,
