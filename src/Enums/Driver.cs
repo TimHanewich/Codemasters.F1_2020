@@ -4,7 +4,6 @@ namespace Codemasters.F1_2020
 {
     public enum Driver
     {
-        Unknown,
         CarlosSainz,
         DaniilKvyat,
         DanielRicciardo,
@@ -83,6 +82,8 @@ namespace Codemasters.F1_2020
         GuilianoAlesi,
         RalphBoschung,
 
+
+        Unknown
     }
 
 }
