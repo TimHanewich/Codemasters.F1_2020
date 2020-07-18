@@ -9,7 +9,6 @@ namespace Codemasters.F1_2020.Analysis
     {
         public ulong SessionId {get; set;}
         public LapAnalysis[] Laps {get; set;}
-        public byte SubjectDriverIndex {get; set;}
 
         //For reporting purposes
         public float PercentLoadComplete;
@@ -19,7 +18,6 @@ namespace Codemasters.F1_2020.Analysis
         {
             PercentLoadComplete = 0;
             LoadComplete = false;
-            SubjectDriverIndex = driver_index;
 
             //Summon this track
             Track ToLoad = Track.Unknown;
@@ -122,11 +120,17 @@ namespace Codemasters.F1_2020.Analysis
                     ca.CornerData = this_corner;
                     if (min_distance_found < float.MaxValue) //we found a suitable packet, so therefore the min distance shold be less than max
                     {
-                        ca.PacketData = winner;
+                        ca.Motion = winner.Motion.FieldMotionData[driver_index];
+                        ca.Lap = winner.Lap.FieldLapData[driver_index];
+                        ca.Telemetry = winner.Telemetry.FieldTelemetryData[driver_index];
+                        ca.CarStatus = winner.CarStatus.FieldCarStatusData[driver_index];
                     }
                     else //if we were not able to find a suitable packet for that corner, populate it with just a blank PacketFrame as a place holder.
                     {
-                        ca.PacketData = null;
+                        ca.Motion = null;
+                        ca.Lap = null;
+                        ca.Telemetry = null;
+                        ca.CarStatus = null;
                     }
                     _CornerAnalysis.Add(ca);
                 }
