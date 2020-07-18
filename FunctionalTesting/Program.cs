@@ -12,7 +12,7 @@ namespace FunctionalTesting
     {
         static void Main(string[] args)
         {
-            Stream s = System.IO.File.OpenRead("C:\\Users\\TaHan\\Downloads\\Codemasters.F1_2020\\SampleData\\Australia_Practice_AlphaTauri.txt");
+            Stream s = System.IO.File.OpenRead(args[0].Replace("\"", ""));
             StreamReader sr = new StreamReader(s);
             JsonTextReader jtr = new JsonTextReader(sr);
             JsonSerializer js = new JsonSerializer();
