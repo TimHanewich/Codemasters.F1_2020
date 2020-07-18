@@ -18,26 +18,19 @@ namespace FunctionalTesting
             JsonSerializer js = new JsonSerializer();
             List<byte[]> data = js.Deserialize<List<byte[]>>(jtr);
 
-            HanewichTimer ht = new HanewichTimer();
-            ht.StartTimer();
-
-            Console.WriteLine("Serializing...");
+            Console.WriteLine("DesSerializing...");
             Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(data);
-            PacketFrame[] frames = PacketFrame.CreateAll(packets);
-
-            //Printing
-            TelemetryAnalysisEngine tae = TelemetryAnalysisEngine.Create(frames);
-            Console.WriteLine("Printing...");
-            string content = tae.PrintTelemetryToCsvContent(packets[0].PlayerCarIndex);
+            Console.WriteLine("Deserializing complete");
 
 
-            Console.WriteLine("Writing to file...");
-            System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\data.csv", content);
-            Console.WriteLine("Done!");
+            SessionAnalysis sa = new SessionAnalysis();
+            Console.WriteLine("Generating session analysis.");
+            sa.Load(packets, packets[0].PlayerCarIndex);
+            
+            string as_json = JsonConvert.SerializeObject(sa);
 
-            ht.StopTimer();
+            System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
 
-            Console.WriteLine("Total time: " + ht.GetElapsedTime().TotalSeconds.ToString());
 
 
 
