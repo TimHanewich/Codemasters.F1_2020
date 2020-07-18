@@ -26,9 +26,23 @@ namespace FunctionalTesting
             SessionAnalysis sa = new SessionAnalysis();
             Console.WriteLine("Generating session analysis.");
             sa.Load(packets, packets[0].PlayerCarIndex);
-            
-            string as_json = JsonConvert.SerializeObject(sa);
+            Console.WriteLine("Analysis complete.");
 
+            foreach (LapAnalysis la in sa.Laps)
+            {
+                Console.WriteLine("Lap " + la.LapNumber.ToString());
+                foreach (CornerAnalysis ca in la.Corners)
+                {
+                    Console.WriteLine(ca.Telemetry.SpeedMph.ToString("#,##0.0"));
+                }
+                Console.ReadLine();
+            }
+
+
+            
+
+            //Write to file
+            string as_json = JsonConvert.SerializeObject(sa);
             System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
 
 
