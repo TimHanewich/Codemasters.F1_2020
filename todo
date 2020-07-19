@@ -3,3 +3,17 @@ Improve ReadMe
 For session analysis - add in mininmal distance to corner (i.e. it wont count unless it is 20 units away)
 
 Add in other tracks to TrackDataContainer
+
+Data to add to the LapAnalysis
+    Fuel Consumption
+    Percent at Full Throttle
+    Percent on Throttle
+    Percent of Full Brake
+    Percent on Brake
+    Percent Coasting
+    DRS Activated as Percent of Available
+    ERS Deployed
+    ERS Harvested
+    Gear Changes
+    Top Speed
+    Avg Incremental Tyre Wear
