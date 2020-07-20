@@ -5,7 +5,6 @@ For session analysis - add in mininmal distance to corner (i.e. it wont count un
 Add in other tracks to TrackDataContainer
 
 Data to add to the LapAnalysis
-    Fuel Consumption
     Percent at Full Throttle
     Percent on Throttle
     Percent of Full Brake
