@@ -242,8 +242,6 @@ namespace Codemasters.F1_2020.Analysis
 
             #region "Get fuel consumption for each lap"
 
-
-
             foreach (byte lapnum in AllLaps)
             {
                 //Get all packets for this lap
@@ -274,8 +272,92 @@ namespace Codemasters.F1_2020.Analysis
                 }
             }
 
+            #endregion
+
+            #region "Get percent on throttle/brake/coasting/max throttle/max brake"
+
+            foreach (byte lapnum in AllLaps)
+            {
+                //Get all packets for this lap
+                List<PacketFrame> lap_frames = new List<PacketFrame>();
+                foreach (PacketFrame frame in frames_sorted)
+                {
+                    if (frame.Lap.FieldLapData[driver_index].CurrentLapNumber == lapnum)
+                    {
+                        lap_frames.Add(frame);
+                    }
+                }
+
+                //Set up counter variables
+                int OnThrottle = 0;
+                int OnBrake = 0;
+                int Coasting = 0;
+                int Overlap = 0;
+                int FullThrottle = 0;
+                int FullBrake = 0;
+
+                //Do the calculations
+                foreach (PacketFrame frame in lap_frames)
+                {
+                    TelemetryPacket.CarTelemetryData ctd = frame.Telemetry.FieldTelemetryData[driver_index];
+
+
+                    //Basics
+                    if (ctd.Throttle > 0 && ctd.Brake == 0)
+                    {
+                        OnThrottle = OnThrottle + 1;
+                    }
+                    else if (ctd.Brake > 0 && ctd.Throttle == 0)
+                    {
+                        OnBrake = OnBrake + 1;
+                    }
+                    else if (ctd.Throttle == 0 && ctd.Brake == 0)
+                    {
+                        Coasting = Coasting + 1;
+                    }
+                    else if (ctd.Throttle > 0 && ctd.Brake > 0)
+                    {
+                        Overlap = Overlap + 1;
+                    }
+
+                    //Full pressures
+                    if (ctd.Throttle == 1)
+                    {
+                        FullThrottle = FullThrottle + 1;
+                    }
+                    if (ctd.Brake == 1)
+                    {
+                        FullBrake = FullBrake + 1;
+                    }
+
+
+                }
+                
+                //Do the calculations
+                float percent_on_throttle = (float)OnThrottle / (float)lap_frames.Count;
+                float percent_on_brake = (float)OnBrake / (float)lap_frames.Count;
+                float percent_coasting = (float)Coasting / (float)lap_frames.Count;
+                float percent_overlap = (float)Overlap / (float)lap_frames.Count;
+                float full_throttle = (float)FullThrottle / (float)lap_frames.Count;
+                float full_brake = (float)FullBrake / (float)lap_frames.Count;
+
+                //plug them in
+                foreach (LapAnalysis la in _LapAnalysis)
+                {
+                    if (la.LapNumber == lapnum)
+                    {
+                        la.PercentOnThrottle = percent_on_throttle;
+                        la.PercentOnBrake = percent_on_brake;
+                        la.PercentCoasting = percent_coasting;
+                        la.PercentThrottleBrakeOverlap = percent_overlap;
+                        la.PercentOnMaxThrottle = full_throttle;
+                        la.PercentOnMaxBrake = full_brake;
+                    }
+                }
+            }
 
             #endregion
+
 
             //Close off
             Laps = _LapAnalysis.ToArray();

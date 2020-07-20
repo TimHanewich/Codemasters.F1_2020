@@ -13,5 +13,13 @@ namespace Codemasters.F1_2020.Analysis
         public bool LapInvalid {get; set;}
 
         public float FuelConsumed {get; set;}
+        
+        public float PercentOnThrottle {get; set;}
+        public float PercentOnBrake {get; set;}
+        public float PercentCoasting {get; set;}
+        public float PercentThrottleBrakeOverlap {get; set;}
+        public float PercentOnMaxThrottle {get; set;}
+        public float PercentOnMaxBrake {get; set;}
+
     }
 }

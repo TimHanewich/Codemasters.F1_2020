@@ -23,14 +23,6 @@ namespace FunctionalTesting
             Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(data);
             Console.WriteLine("Deserializing complete");
 
-            // PacketFrame[] frames = PacketFrame.CreateAll(packets);
-            // foreach (PacketFrame frame in frames)
-            // {
-            //     Console.WriteLine(frame.Lap.FieldLapData[packets[0].PlayerCarIndex].CurrentLapNumber.ToString() + " " + frame.Lap.FieldLapData[packets[0].PlayerCarIndex].LapDistance.ToString());
-            //     Task.Delay(50).Wait();
-            // }
-
-
 
             SessionAnalysis sa = new SessionAnalysis();
             Console.WriteLine("Generating session analysis.");
@@ -40,7 +32,12 @@ namespace FunctionalTesting
 
             foreach (LapAnalysis la in sa.Laps)
             {
-                Console.WriteLine("Lap " + la.LapNumber.ToString() + " " + la.FuelConsumed.ToString());
+                Console.WriteLine("Lap " + la.LapNumber.ToString());
+                Console.WriteLine("T:" + la.PercentOnThrottle.ToString("#0.0%"));
+                Console.WriteLine("B:" + la.PercentOnBrake.ToString("#0.0%"));
+                Console.WriteLine("C:" + la.PercentCoasting.ToString("#0.0%"));
+                Console.WriteLine("O:" + la.PercentThrottleBrakeOverlap.ToString("#0.0%"));
+                Console.ReadLine();
             }
 
 
