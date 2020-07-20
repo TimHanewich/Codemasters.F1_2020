@@ -23,32 +23,15 @@ namespace FunctionalTesting
             Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(data);
             Console.WriteLine("Deserializing complete");
 
-
             SessionAnalysis sa = new SessionAnalysis();
             Console.WriteLine("Generating session analysis.");
             sa.Load(packets, packets[0].PlayerCarIndex);
             Console.WriteLine("Analysis complete.");
             
 
-            foreach (LapAnalysis la in sa.Laps)
-            {
-                Console.WriteLine("Lap " + la.LapNumber.ToString());
-                Console.WriteLine("T:" + la.PercentOnThrottle.ToString("#0.0%"));
-                Console.WriteLine("B:" + la.PercentOnBrake.ToString("#0.0%"));
-                Console.WriteLine("C:" + la.PercentCoasting.ToString("#0.0%"));
-                Console.WriteLine("O:" + la.PercentThrottleBrakeOverlap.ToString("#0.0%"));
-                Console.ReadLine();
-            }
-
-
-            
-
-            // //Write to file
-            // string as_json = JsonConvert.SerializeObject(sa);
-            // System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
-
-
-
+            //Write to file
+            string as_json = JsonConvert.SerializeObject(sa);
+            System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
 
         }
     }
