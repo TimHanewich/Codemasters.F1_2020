@@ -477,6 +477,39 @@ namespace Codemasters.F1_2020.Analysis
 
             #endregion
 
+            #region "Get average incremental tyre wear"
+
+            foreach (byte lapnum in AllLaps)
+            {
+                //Get all packets for this lap
+                List<PacketFrame> lap_frames = new List<PacketFrame>();
+                foreach (PacketFrame frame in frames_sorted)
+                {
+                    if (frame.Lap.FieldLapData[driver_index].CurrentLapNumber == lapnum)
+                    {
+                        lap_frames.Add(frame);
+                    }
+                }
+
+                WheelDataArray tyrewear_start = lap_frames[0].CarStatus.FieldCarStatusData[driver_index].TyreWearPercentage;
+                WheelDataArray tyrewear_end = lap_frames[lap_frames.Count-1].CarStatus.FieldCarStatusData[driver_index].TyreWearPercentage;
+                float AvgTyreWear_Start = (tyrewear_start.RearLeft + tyrewear_start.RearRight + tyrewear_start.FrontLeft + tyrewear_start.FrontRight) / 4f;
+                float AvgTyreWear_End = (tyrewear_end.RearLeft + tyrewear_end.RearRight + tyrewear_end.FrontLeft + tyrewear_end.FrontRight) / 4f;
+                float avginctyrewear = AvgTyreWear_End - AvgTyreWear_Start;
+
+                //Plug it in
+                foreach (LapAnalysis la in _LapAnalysis)
+                {
+                    if (la.LapNumber == lapnum)
+                    {
+                        la.IncrementalAverageTyreWear = avginctyrewear;
+                    }
+                }
+
+            }
+
+            #endregion
+
             //Close off
             Laps = _LapAnalysis.ToArray();
 
