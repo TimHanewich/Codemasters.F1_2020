@@ -24,5 +24,7 @@ namespace Codemasters.F1_2020.Analysis
         public float ErsDeployed {get; set;}
         public float ErsHarvested {get; set;}
 
+        public int GearChanges {get; set;}
+
     }
 }

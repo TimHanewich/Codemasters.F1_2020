@@ -30,7 +30,7 @@ namespace FunctionalTesting
 
             foreach (LapAnalysis la in sa.Laps)
             {
-                Console.WriteLine(la.LapNumber.ToString() + " " + la.ErsDeployed.ToString() + " " + la.ErsHarvested.ToString());
+                Console.WriteLine(la.LapNumber.ToString() + " " + la.GearChanges.ToString());
             }
             
 

@@ -388,6 +388,50 @@ namespace Codemasters.F1_2020.Analysis
 
             #endregion
 
+            #region "Get gear changes"
+
+            foreach (byte lapnum in AllLaps)
+            {
+                //Get all packets for this lap
+                List<PacketFrame> lap_frames = new List<PacketFrame>();
+                foreach (PacketFrame frame in frames_sorted)
+                {
+                    if (frame.Lap.FieldLapData[driver_index].CurrentLapNumber == lapnum)
+                    {
+                        lap_frames.Add(frame);
+                    }
+                }
+
+                //Count the number of gear changes
+                int gear_changes = 0;
+                PacketFrame last_frame_ = null;
+                foreach (PacketFrame frame in lap_frames)
+                {
+                    if (last_frame_ != null)
+                    {
+                        sbyte last_gear = last_frame_.Telemetry.FieldTelemetryData[driver_index].Gear;
+                        sbyte this_gear = frame.Telemetry.FieldTelemetryData[driver_index].Gear;
+                        if (this_gear != last_gear)
+                        {
+                            gear_changes = gear_changes + 1;
+                        }
+                    }
+                    last_frame_ = frame;
+                }
+
+                //Plug it in
+                foreach (LapAnalysis la in _LapAnalysis)
+                {
+                    if (la.LapNumber == lapnum)
+                    {
+                        la.GearChanges = gear_changes;
+                    }
+                }
+
+            }
+
+            #endregion
+
             //Close off
             Laps = _LapAnalysis.ToArray();
 
