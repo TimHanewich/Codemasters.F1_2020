@@ -27,11 +27,12 @@ namespace FunctionalTesting
             Console.WriteLine("Generating session analysis.");
             sa.Load(packets, packets[0].PlayerCarIndex);
             Console.WriteLine("Analysis complete.");
+
             
 
-            //Write to file
-            string as_json = JsonConvert.SerializeObject(sa);
-            System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
+            // //Write to file
+            // string as_json = JsonConvert.SerializeObject(sa);
+            // System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
 
         }
     }

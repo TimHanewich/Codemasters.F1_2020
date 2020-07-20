@@ -358,7 +358,6 @@ namespace Codemasters.F1_2020.Analysis
 
             #endregion
 
-
             //Close off
             Laps = _LapAnalysis.ToArray();
 

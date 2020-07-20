@@ -21,5 +21,6 @@ namespace Codemasters.F1_2020.Analysis
         public float PercentOnMaxThrottle {get; set;}
         public float PercentOnMaxBrake {get; set;}
 
+
     }
 }
