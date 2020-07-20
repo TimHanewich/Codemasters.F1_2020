@@ -1,5 +1,3 @@
 Improve ReadMe
 
-For session analysis - add in mininmal distance to corner (i.e. it wont count unless it is 20 units away)
-
 Add in other tracks to TrackDataContainer
