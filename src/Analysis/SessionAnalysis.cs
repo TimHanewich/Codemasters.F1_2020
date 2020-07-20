@@ -52,8 +52,8 @@ namespace Codemasters.F1_2020.Analysis
                 }
             }
 
-            //remove the highest lap (because you crossed the line and likely didn't finished it)
-            AllLaps.Remove(AllLaps.Max());
+            // //remove the highest lap (because you crossed the line and likely didn't finished it)
+            // AllLaps.Remove(AllLaps.Max());
 
             //Set the total number of corners that need to be analyzed (this is used only for progress reporting purposes)
             int number_of_corners = tdc.Corners.Length * AllLaps.Count;
@@ -239,6 +239,43 @@ namespace Codemasters.F1_2020.Analysis
                 last_frame = this_frame;
             }
 
+
+            #region "Get fuel consumption for each lap"
+
+
+
+            foreach (byte lapnum in AllLaps)
+            {
+                //Get all packets for this lap
+                List<PacketFrame> lap_frames = new List<PacketFrame>();
+                foreach (PacketFrame frame in frames_sorted)
+                {
+                    if (frame.Lap.FieldLapData[driver_index].CurrentLapNumber == lapnum)
+                    {
+                        lap_frames.Add(frame);
+                    }
+                }
+
+                //Get the min and max and then plug it in
+                if (lap_frames.Count > 0)
+                {
+                    float fuel_start = lap_frames[0].CarStatus.FieldCarStatusData[driver_index].FuelLevel;
+                    float fuel_end = lap_frames[lap_frames.Count - 1].CarStatus.FieldCarStatusData[driver_index].FuelLevel;
+                    float fuel_used = fuel_end - fuel_start;
+                    fuel_used = fuel_used * -1;
+
+                    foreach (LapAnalysis la in _LapAnalysis)
+                    {
+                        if (la.LapNumber == lapnum)
+                        {
+                            la.FuelConsumed = fuel_used;
+                        }
+                    }
+                }
+            }
+
+
+            #endregion
 
             //Close off
             Laps = _LapAnalysis.ToArray();

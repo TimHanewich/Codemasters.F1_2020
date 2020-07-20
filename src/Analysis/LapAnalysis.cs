@@ -11,5 +11,7 @@ namespace Codemasters.F1_2020.Analysis
         public float Sector3Time {get; set;}
         public float LapTime {get; set;}
         public bool LapInvalid {get; set;}
+
+        public float FuelConsumed {get; set;}
     }
 }
