@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using Codemasters.F1_2020.Analysis;
 using TimHanewichToolkit;
+using System.Threading.Tasks;
 
 namespace FunctionalTesting
 {
@@ -22,28 +23,32 @@ namespace FunctionalTesting
             Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(data);
             Console.WriteLine("Deserializing complete");
 
+            // PacketFrame[] frames = PacketFrame.CreateAll(packets);
+            // foreach (PacketFrame frame in frames)
+            // {
+            //     Console.WriteLine(frame.Lap.FieldLapData[packets[0].PlayerCarIndex].CurrentLapNumber.ToString() + " " + frame.Lap.FieldLapData[packets[0].PlayerCarIndex].LapDistance.ToString());
+            //     Task.Delay(50).Wait();
+            // }
+
+
 
             SessionAnalysis sa = new SessionAnalysis();
             Console.WriteLine("Generating session analysis.");
             sa.Load(packets, packets[0].PlayerCarIndex);
             Console.WriteLine("Analysis complete.");
+            
 
             foreach (LapAnalysis la in sa.Laps)
             {
-                Console.WriteLine("Lap " + la.LapNumber.ToString());
-                foreach (CornerAnalysis ca in la.Corners)
-                {
-                    Console.WriteLine(ca.Telemetry.SpeedMph.ToString("#,##0.0"));
-                }
-                Console.ReadLine();
+                Console.WriteLine("Lap " + la.LapNumber.ToString() + " " + la.FuelConsumed.ToString());
             }
 
 
             
 
-            //Write to file
-            string as_json = JsonConvert.SerializeObject(sa);
-            System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
+            // //Write to file
+            // string as_json = JsonConvert.SerializeObject(sa);
+            // System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
 
 
 
