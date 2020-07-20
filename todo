@@ -5,5 +5,4 @@ For session analysis - add in mininmal distance to corner (i.e. it wont count un
 Add in other tracks to TrackDataContainer
 
 Data to add to the LapAnalysis
-    Top Speed
     Avg Incremental Tyre Wear

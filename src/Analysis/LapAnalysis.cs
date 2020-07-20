@@ -26,5 +26,8 @@ namespace Codemasters.F1_2020.Analysis
 
         public int GearChanges {get; set;}
 
+        public ushort TopSpeedKph {get; set;}
+        public ushort TopSpeedMph {get; set;}
+
     }
 }

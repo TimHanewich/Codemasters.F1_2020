@@ -432,6 +432,51 @@ namespace Codemasters.F1_2020.Analysis
 
             #endregion
 
+            #region  "Get Top Speed"
+
+            foreach (byte lapnum in AllLaps)
+            {
+                //Get all packets for this lap
+                List<PacketFrame> lap_frames = new List<PacketFrame>();
+                foreach (PacketFrame frame in frames_sorted)
+                {
+                    if (frame.Lap.FieldLapData[driver_index].CurrentLapNumber == lapnum)
+                    {
+                        lap_frames.Add(frame);
+                    }
+                }
+
+                //Get values
+                ushort max_kph = 0;
+                ushort max_mph = 0;
+                foreach (PacketFrame frame in lap_frames)
+                {
+                    TelemetryPacket.CarTelemetryData ctd = frame.Telemetry.FieldTelemetryData[driver_index];
+                    if (ctd.SpeedKph > max_kph)
+                    {
+                        max_kph = ctd.SpeedKph;
+                    }
+                    if (ctd.SpeedMph > max_mph)
+                    {
+                        max_mph = ctd.SpeedMph;
+                    }
+                }
+
+                //Plug it in
+                foreach (LapAnalysis la in _LapAnalysis)
+                {
+                    if (la.LapNumber == lapnum)
+                    {
+                        la.TopSpeedKph = max_kph;
+                        la.TopSpeedMph = max_mph;
+                    }
+                }
+
+
+            }
+
+            #endregion
+
             //Close off
             Laps = _LapAnalysis.ToArray();
 
