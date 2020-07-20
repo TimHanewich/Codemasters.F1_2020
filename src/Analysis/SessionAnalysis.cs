@@ -358,6 +358,36 @@ namespace Codemasters.F1_2020.Analysis
 
             #endregion
 
+            #region "Get ERS deployed + harvested"
+
+            foreach (byte lapnum in AllLaps)
+            {
+                //Get all packets for this lap
+                List<PacketFrame> lap_frames = new List<PacketFrame>();
+                foreach (PacketFrame frame in frames_sorted)
+                {
+                    if (frame.Lap.FieldLapData[driver_index].CurrentLapNumber == lapnum)
+                    {
+                        lap_frames.Add(frame);
+                    }
+                }
+
+                float ers_dep = lap_frames[lap_frames.Count-1].CarStatus.FieldCarStatusData[driver_index].ErsDeployedThisLap;
+                float ers_har = lap_frames[lap_frames.Count-1].CarStatus.FieldCarStatusData[driver_index].ErsHarvestedThisLapByMGUH + lap_frames[lap_frames.Count-1].CarStatus.FieldCarStatusData[driver_index].ErsHarvestedThisLapByMGUK;
+
+                //plug them in
+                foreach (LapAnalysis la in _LapAnalysis)
+                {
+                    if (la.LapNumber == lapnum)
+                    {
+                        la.ErsDeployed = ers_dep;
+                        la.ErsHarvested = ers_har;
+                    }
+                }
+            }
+
+            #endregion
+
             //Close off
             Laps = _LapAnalysis.ToArray();
 

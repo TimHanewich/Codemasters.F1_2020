@@ -28,6 +28,10 @@ namespace FunctionalTesting
             sa.Load(packets, packets[0].PlayerCarIndex);
             Console.WriteLine("Analysis complete.");
 
+            foreach (LapAnalysis la in sa.Laps)
+            {
+                Console.WriteLine(la.LapNumber.ToString() + " " + la.ErsDeployed.ToString() + " " + la.ErsHarvested.ToString());
+            }
             
 
             // //Write to file
