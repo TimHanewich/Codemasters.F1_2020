@@ -23,6 +23,11 @@ namespace FunctionalTesting
             Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(data);
             Console.WriteLine("Deserializing complete");
 
+            SessionSummary ss = SessionSummary.Create(packets, packets[0].PlayerCarIndex);
+
+            Console.WriteLine(JsonConvert.SerializeObject(ss));
+            Console.ReadLine();
+
             SessionAnalysis sa = new SessionAnalysis();
             Console.WriteLine("Generating session analysis.");
             sa.Load(packets, packets[0].PlayerCarIndex);
