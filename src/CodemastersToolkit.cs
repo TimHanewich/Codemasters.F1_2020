@@ -449,6 +449,9 @@ namespace Codemasters.F1_2020
                 return c;
             }
 
+            /// <summary>
+            /// This returns the name that should be displayed in a leaderboard (i.e. "L. Hamilton")
+            /// </summary>
             public static string GetDriverDisplayNameFromDriver(Driver d)
             {
                 string s = "Unknown";
@@ -569,6 +572,323 @@ namespace Codemasters.F1_2020
                 float dist = (float)Math.Sqrt(x_2 + y_2 + z_2);
                 return dist;
             }
+        
+            #region "Friendly Names"
+
+            public static string GetTrackFriendlyName(Track t)
+            {
+                string ToReturn = t.ToString();
+
+                if (t == Track.Melbourne)
+                {
+                    ToReturn = "Melbourne";
+                }
+                else if (t == Track.PaulRicard)
+                {
+                    ToReturn = "Paul Ricard";
+                }
+                else if (t == Track.Shanghai)
+                {
+                    ToReturn = "China";
+                }
+                else if (t == Track.Sakhir)
+                {
+                    ToReturn = "Bahrain";
+                }
+                else if (t == Track.Catalunya)
+                {
+                    ToReturn = "Spain";
+                }
+                else if (t == Track.Monaco)
+                {
+                    ToReturn = "Monaco";
+                }
+                else if (t == Track.Montreal)
+                {
+                    ToReturn = "Canada";
+                }
+                else if (t == Track.Silverstone)
+                {
+                    ToReturn = "Silverstone";
+                }
+                else if (t == Track.Hockenheim)
+                {
+                    ToReturn = "Hockenheim";
+                }
+                else if (t == Track.Spa)
+                {
+                    ToReturn = "Spa (Belgium)";
+                }
+                else if (t == Track.Monza)
+                {
+                    ToReturn = "Italy";
+                }
+                else if (t == Track.Singapore)
+                {
+                    ToReturn = "Singapore";
+                }
+                else if (t == Track.Suzuka)
+                {
+                    ToReturn = "Japan";
+                }
+                else if (t == Track.AbuDhabi)
+                {
+                    ToReturn = "Abu Dhabi";
+                }
+                else if (t == Track.Texas)
+                {
+                    ToReturn = "United States";
+                }
+                else if (t == Track.Brazil)
+                {
+                    ToReturn = "Brazil";
+                }
+                else if (t == Track.Austria)
+                {
+                    ToReturn = "Austria";
+                }
+                else if (t == Track.Sochi)
+                {
+                    ToReturn = "Russia";
+                }
+                else if (t == Track.Mexico)
+                {
+                    ToReturn = "Mexico";
+                }
+                else if (t == Track.Baku)
+                {
+                    ToReturn = "Azerbaijan";
+                }
+                else if (t == Track.SakhirShort)
+                {
+                    ToReturn = "Bahrain (Short)";
+                }
+                else if (t == Track.SilverstoneShort)
+                {
+                    ToReturn = "Silverstone (Short)";
+                }
+                else if (t == Track.TexasShort)
+                {
+                    ToReturn = "US (Short)";
+                }
+                else if (t == Track.SuzukaShort)
+                {
+                    ToReturn = "Japan (Short)";
+                }
+                else if (t == Track.Hanoi)
+                {
+                    ToReturn = "Vietnam";
+                }
+                else if (t == Track.Zandvoort)
+                {
+                    ToReturn = "Netherlands";
+                }
+
+                return ToReturn;
+            }
+
+            public static string GetDriverFriendlyName(Driver d)
+            {
+                string ToReturn = d.ToString();
+
+                if (d == Driver.LewisHamilton)
+                {
+                    ToReturn = "Lewis Hamilton";
+                }
+                else if (d == Driver.ValtteriBottas)
+                {
+                    ToReturn = "Valtteri Bottas";
+                }
+                else if (d == Driver.CharlesLeclerc)
+                {
+                    ToReturn = "Charles Leclerc";
+                }
+                else if (d == Driver.SebastianVettel)
+                {
+                    ToReturn = "Sebastian Vettel";
+                }
+                else if (d == Driver.MaxVerstappen)
+                {
+                    ToReturn = "Max Verstappen";
+                }
+                else if (d == Driver.AlexanderAlbon)
+                {
+                    ToReturn = "Alex Albon";
+                }
+                else if (d == Driver.CarlosSainz)
+                {
+                    ToReturn = "Carlos Sainz";
+                }
+                else if (d == Driver.LandoNorris)
+                {
+                    ToReturn = "Lando Norris";
+                }
+                else if (d == Driver.DanielRicciardo)
+                {
+                    ToReturn = "Daniel Ricciardo";
+                }
+                else if (d == Driver.EstebanOcon)
+                {
+                    ToReturn = "Esteban Ocon";
+                }
+                else if (d == Driver.PierreGasly)
+                {
+                    ToReturn = "Pierre Gasly";
+                }
+                else if (d == Driver.DaniilKvyat)
+                {
+                    ToReturn = "Daniil Kvyat";
+                }
+                else if (d == Driver.SergioPerez)
+                {
+                    ToReturn = "Sergio Perez";
+                }
+                else if (d == Driver.LanceStroll)
+                {
+                    ToReturn = "Lance Stroll";
+                }
+                else if (d == Driver.KimiRaikkonen)
+                {
+                    ToReturn = "Kimi Raikkonen";
+                }
+                else if (d == Driver.AntonioGiovinazzi)
+                {
+                    ToReturn = "Antonio Giovinazzi";
+                }
+                else if (d == Driver.KevinMagnussen)
+                {
+                    ToReturn = "Kevin Magnussen";
+                }
+                else if (d == Driver.RomainGrosjean)
+                {
+                    ToReturn = "Romain Grosjean";
+                }
+                else if (d == Driver.GeorgeRussell)
+                {
+                    ToReturn = "George Russell";
+                }
+                else if (d == Driver.NicholasLatifi)
+                {
+                    ToReturn = "Nicholas Latifi";
+                }
+
+                return ToReturn;
+            }
+
+            public static string GetSessionTypeFriendlyName(SessionPacket.SessionType session_type)
+            {
+                string ToReturn = session_type.ToString();
+
+                if (session_type == SessionPacket.SessionType.Practice)
+                {
+                    ToReturn = "Practice";
+                }
+                else if (session_type == SessionPacket.SessionType.Qualifying)
+                {
+                    ToReturn = "Qualifying";
+                }
+                else if (session_type == SessionPacket.SessionType.Race)
+                {
+                    ToReturn = "Race";
+                }
+                else if (session_type == SessionPacket.SessionType.Practice1)
+                {
+                    ToReturn = "Practice 1";
+                }
+                else if (session_type == SessionPacket.SessionType.Practice2)
+                {
+                    ToReturn = "Practice 2";
+                }
+                else if (session_type == SessionPacket.SessionType.Practice3)
+                {
+                    ToReturn = "Practice 3";
+                }
+                else if (session_type == SessionPacket.SessionType.ShortPractice)
+                {
+                    ToReturn = "Short Practice";
+                }
+                else if (session_type == SessionPacket.SessionType.Qualifying1)
+                {
+                    ToReturn = "Qualifying 1";
+                }
+                else if (session_type == SessionPacket.SessionType.Qualifying2)
+                {
+                    ToReturn = "Qualifying 2";
+                }
+                else if (session_type == SessionPacket.SessionType.Qualifying3)
+                {
+                    ToReturn = "Qualifying 3";
+                }
+                else if (session_type == SessionPacket.SessionType.ShortQualifying)
+                {
+                    ToReturn = "Short Qualifying";
+                }
+                else if (session_type == SessionPacket.SessionType.OneShotQualifying)
+                {
+                    ToReturn = "One-Shot Qualifying";
+                }
+                else if (session_type == SessionPacket.SessionType.Race2)
+                {
+                    ToReturn = "Race #2";
+                }
+                else if (session_type == SessionPacket.SessionType.TimeTrial)
+                {
+                    ToReturn = "Time Trial";
+                }
+
+                return ToReturn;
+            }
+
+            public static string GetTeamFriendlyName(Team t)
+            {
+                string ToReturn = t.ToString();
+
+                if (t == Team.Mercedes)
+                {
+                    ToReturn = "Mercedes";
+                }
+                else if (t == Team.Ferrari)
+                {
+                    ToReturn = "Ferrari";
+                }
+                else if (t == Team.RedBullRacing)
+                {
+                    ToReturn = "Red Bull";
+                }
+                else if (t == Team.McLaren)
+                {
+                    ToReturn = "McLaren";
+                }
+                else if (t == Team.Renault)
+                {
+                    ToReturn = "Renault";
+                }
+                else if (t == Team.AlphaTauri)
+                {
+                    ToReturn = "Alpha Tauri";
+                }
+                else if (t == Team.RacingPoint)
+                {
+                    ToReturn = "Racing Point";
+                }
+                else if (t == Team.AlfaRomeo)
+                {
+                    ToReturn = "Alfa Romeo";
+                }
+                else if (t == Team.Haas)
+                {
+                    ToReturn = "Haas";
+                }
+                else if (t == Team.Williams)
+                {
+                    ToReturn = "Williams";
+                }
+
+                return ToReturn;
+            }
+
+            #endregion
+        
         }
 
 }
