@@ -20,7 +20,7 @@ namespace FunctionalTesting
             List<byte[]> data = js.Deserialize<List<byte[]>>(jtr);
 
             Console.WriteLine("DesSerializing...");
-            Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(data);
+            Packet[] packets = Packet.BulkLoadAllSessionData(data);
             Console.WriteLine("Deserializing complete");
 
             SessionSummary ss = SessionSummary.Create(packets, packets[0].PlayerCarIndex);

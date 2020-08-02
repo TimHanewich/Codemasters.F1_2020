@@ -27,7 +27,7 @@ namespace Codemasters.F1_2020.Analysis
 
         public static TelemetryAnalysisEngine Create(List<byte[]> session_bytes)
         {
-            Packet[] packets = CodemastersToolkit.BulkConvertByteArraysToPackets(session_bytes);
+            Packet[] packets = Packet.BulkLoadAllSessionData(session_bytes);
             TelemetryAnalysisEngine ToReturn = TelemetryAnalysisEngine.Create(packets);
             return ToReturn;
         }

@@ -167,5 +167,71 @@ namespace Codemasters.F1_2020
             return winner;
 
         }
+    
+        public static Packet[] BulkLoadAllSessionData(List<byte[]> session_data)
+        {
+            List<Packet> Packets = new List<Packet>();
+
+                foreach (byte[] b in session_data)
+                {
+                    PacketType pt = CodemastersToolkit.GetPacketType(b);
+                    if (pt == PacketType.Motion)
+                    {
+                        MotionPacket mp = new MotionPacket();
+                        mp.LoadBytes(b);
+                        Packets.Add(mp);
+                    }
+                    else if (pt == PacketType.Session)
+                    {
+                        SessionPacket sp = new SessionPacket();
+                        sp.LoadBytes(b);
+                        Packets.Add(sp);
+                    }
+                    else if (pt == PacketType.Lap)
+                    {
+                        LapPacket sp = new LapPacket();
+                        sp.LoadBytes(b);
+                        Packets.Add(sp);
+                    }
+                    else if (pt == PacketType.Event)
+                    {
+                        //Event packet not complete yet
+                    }
+                    else if (pt == PacketType.Participants)
+                    {
+                        ParticipantPacket sp = new ParticipantPacket();
+                        sp.LoadBytes(b);
+                        Packets.Add(sp);
+                    }
+                    else if (pt == PacketType.CarSetup)
+                    {
+                        //Car setup packet not complete yet
+                    }
+                    else if (pt == PacketType.CarTelemetry)
+                    {
+                        TelemetryPacket sp = new TelemetryPacket();
+                        sp.LoadBytes(b);
+                        Packets.Add(sp);
+                    }
+                    else if (pt == PacketType.CarStatus)
+                    {
+                        CarStatusPacket csp = new CarStatusPacket();
+                        csp.LoadBytes(b);
+                        Packets.Add(csp);
+                    }
+                    else if (pt == PacketType.FinalClassification)
+                    {
+                        FinalClassificationPacket fcp = new FinalClassificationPacket();
+                        fcp.LoadBytes(b);
+                        Packets.Add(fcp);
+                    }
+                    else if (pt == PacketType.LobbyInfo)
+                    {
+                        //Lobby info packet not done yet.
+                    }
+                }
+
+                return Packets.ToArray();
+        }
     }
 }
