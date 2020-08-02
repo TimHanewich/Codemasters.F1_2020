@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using TimHanewichToolkit;
+using TimHanewich.Toolkit;
 
 namespace Codemasters.F1_2020
 {

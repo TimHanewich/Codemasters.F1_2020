@@ -1,5 +1,5 @@
 using System;
-using TimHanewichToolkit;
+using TimHanewich.Toolkit;
 using System.Collections.Generic;
 
 namespace Codemasters.F1_2020
