@@ -4,7 +4,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Codemasters.F1_2020.Analysis;
-using TimHanewichToolkit;
+using TimHanewich.Toolkit;
 using System.Threading.Tasks;
 
 namespace FunctionalTesting
