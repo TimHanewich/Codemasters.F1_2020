@@ -23,25 +23,17 @@ namespace FunctionalTesting
             Packet[] packets = Packet.BulkLoadAllSessionData(data);
             Console.WriteLine("Deserializing complete");
 
-            SessionSummary ss = SessionSummary.Create(packets, packets[0].PlayerCarIndex);
-
-            Console.WriteLine(JsonConvert.SerializeObject(ss));
-            Console.ReadLine();
-
             SessionAnalysis sa = new SessionAnalysis();
-            Console.WriteLine("Generating session analysis.");
-            sa.Load(packets, packets[0].PlayerCarIndex);
-            Console.WriteLine("Analysis complete.");
+            Task.Run(() => sa.Load(packets, packets[0].PlayerCarIndex));
 
-            foreach (LapAnalysis la in sa.Laps)
+            while (sa.LoadComplete == false)
             {
-                Console.WriteLine(la.LapNumber.ToString() + " " + la.IncrementalAverageTyreWear.ToString());
+                Console.WriteLine(sa.PercentLoadComplete.ToString());
+                Task.Delay(500).Wait();
             }
-            
 
-            // //Write to file
-            // string as_json = JsonConvert.SerializeObject(sa);
-            // System.IO.File.WriteAllText("C:\\Users\\TaHan\\Downloads\\sa.txt", as_json);
+            Console.WriteLine(JsonConvert.SerializeObject(sa));
+            
 
         }
     }
