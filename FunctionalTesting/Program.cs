@@ -28,11 +28,11 @@ namespace FunctionalTesting
 
             while (sa.LoadComplete == false)
             {
-                Console.WriteLine(sa.PercentLoadComplete.ToString());
-                Task.Delay(500).Wait();
+                Console.Write("\r" + sa.PercentLoadComplete.ToString());
+                Task.Delay(50).Wait();
             }
 
-            Console.WriteLine(JsonConvert.SerializeObject(sa));
+            Console.WriteLine("Done!");
             
 
         }

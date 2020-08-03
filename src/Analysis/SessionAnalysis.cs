@@ -19,6 +19,8 @@ namespace Codemasters.F1_2020.Analysis
             PercentLoadComplete = 0;
             LoadComplete = false;
 
+            
+
             //Summon this track
             Track ToLoad = Track.Unknown;
             foreach (Packet p in packets)
@@ -51,19 +53,21 @@ namespace Codemasters.F1_2020.Analysis
                     }
                 }
             }
-
-            // //remove the highest lap (because you crossed the line and likely didn't finished it)
-            // AllLaps.Remove(AllLaps.Max());
-
+            
             //Set the total number of corners that need to be analyzed (this is used only for progress reporting purposes)
             int number_of_corners = tdc.Corners.Length * AllLaps.Count;
+
+            //Set the % complete to 5% at this point
+            PercentLoadComplete = 0.05f;
 
 
             //Generate the frames
             PacketFrame[] frames = PacketFrame.CreateAll(packets);
+            PercentLoadComplete = 0.15f; //Set it to 15% complete at this point
 
             //Create the lap analysis objects and fill it with corner analysis data.
             //This process also fills in the LapNumber property
+            //This process below should take up the % complete from 15% to 90%
             List<LapAnalysis> _LapAnalysis = new List<LapAnalysis>();
             foreach (byte lap_num in AllLaps)
             {
@@ -137,7 +141,12 @@ namespace Codemasters.F1_2020.Analysis
                 this_lap_analysis.Corners = _CornerAnalysis.ToArray();
                 
 
+                //Add this to the list of lap analyses
                 _LapAnalysis.Add(this_lap_analysis);
+
+                //Update the percent complete
+                float AdditionalPercentCompletePerLap = (0.90f - 0.15f) / (float)AllLaps.Count;
+                PercentLoadComplete = PercentLoadComplete + AdditionalPercentCompletePerLap;
 
             }
             
@@ -238,7 +247,7 @@ namespace Codemasters.F1_2020.Analysis
                 }
                 last_frame = this_frame;
             }
-
+            PercentLoadComplete = 0.95f; //Mark the percent complete as 95%
 
             #region "Get fuel consumption for each lap"
 
@@ -514,7 +523,7 @@ namespace Codemasters.F1_2020.Analysis
             Laps = _LapAnalysis.ToArray();
 
             //Shut down
-            PercentLoadComplete = 1;
+            PercentLoadComplete = 1; //Mark the percent complete as 100%
             LoadComplete = true;
 
 
