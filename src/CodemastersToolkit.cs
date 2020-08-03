@@ -573,6 +573,54 @@ namespace Codemasters.F1_2020
                 return dist;
             }
         
+            public static string CarNameFromTeam(Team t)
+            {
+                string ToReturn = "2020 Challenger";
+
+                if (t == Team.Mercedes)
+                {
+                    ToReturn = "W11";
+                }
+                else if (t == Team.RedBullRacing)
+                {
+                    ToReturn = "RB16";
+                }
+                else if (t == Team.McLaren)
+                {
+                    ToReturn = "MCL35";
+                }
+                else if (t == Team.Ferrari)
+                {
+                    ToReturn = "SF1000";
+                }
+                else if (t == Team.RacingPoint)
+                {
+                    ToReturn = "RP20";
+                }
+                else if (t == Team.Renault)
+                {
+                    ToReturn = "R.S.20";
+                }
+                else if (t == Team.AlphaTauri)
+                {
+                    ToReturn = "AT01";
+                }
+                else if (t == Team.AlfaRomeo)
+                {
+                    ToReturn = "C39";
+                }
+                else if (t == Team.Haas)
+                {
+                    ToReturn = "VF-20";
+                }
+                else if (t == Team.Williams)
+                {
+                    ToReturn = "FW43";
+                }
+
+                return ToReturn;
+            }
+
             #region "Friendly Names"
 
             public static string GetTrackFriendlyName(Track t)
