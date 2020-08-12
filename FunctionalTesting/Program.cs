@@ -13,10 +13,8 @@ namespace FunctionalTesting
     {
         static void Main(string[] args)
         {
-            string path = "C:\\Users\\TaHan\\Downloads\\Silverstone.csv";
-            string content = System.IO.File.ReadAllText(path);
-            TrackDataContainer tdl = TrackDataContainer.LoadFromCsvContent(Track.Silverstone, content);
-            Console.WriteLine(JsonConvert.SerializeObject(tdl));
+            TrackDataContainer tdc = TrackDataContainer.LoadTrack(Track.Silverstone);
+            Console.WriteLine(JsonConvert.SerializeObject(tdc));
 
 
         }
