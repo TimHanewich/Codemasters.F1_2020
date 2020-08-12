@@ -168,7 +168,7 @@ namespace Codemasters.F1_2020.Analysis
             //Get corners
             List<TrackLocation> corners = new List<TrackLocation>();
             int t = 0;
-            for (t=1;t<csv.Rows[0].Values.Count;t++)
+            for (t=1;t<csv.Rows[1].Values.Count;t++)
             {
                 TrackLocation tl = new TrackLocation();
 
