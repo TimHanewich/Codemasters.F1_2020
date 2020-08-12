@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Codemasters.F1_2020</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Authors>Tim Hanewich</Authors>
     <Product>Codemasters.F1_2020</Product>
     <Description>Resources for deserializing UDP data from the F1 2020 video game by Codemasters.</Description>
