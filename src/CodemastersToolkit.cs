@@ -189,6 +189,7 @@ namespace Codemasters.F1_2020
                     Dict.Add(13, Driver.SebastianVettel);
                     Dict.Add(14, Driver.SergioPerez);
                     Dict.Add(15, Driver.ValtteriBottas);
+                    Dict.Add(17, Driver.EstebanOcon);
                     Dict.Add(19, Driver.LanceStroll);
                     Dict.Add(20, Driver.ArronBarnes);
                     Dict.Add(21, Driver.MartinGiles);
