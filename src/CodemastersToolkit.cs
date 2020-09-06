@@ -412,7 +412,7 @@ namespace Codemasters.F1_2020
                 }
                 else if (t == Team.Haas)
                 {
-                    c = Color.FromArgb(255, 189, 158, 87);
+                    c = Color.FromArgb(255, 120, 120, 120);
                 }
                 else if (t == Team.McLaren)
                 {
@@ -424,7 +424,7 @@ namespace Codemasters.F1_2020
                 }
                 else if (t == Team.RedBullRacing)
                 {
-                    c = Color.FromArgb(255, 30, 65, 255);
+                    c = Color.FromArgb(255, 6, 0, 239);
                 }
                 else if (t == Team.Renault)
                 {
@@ -440,7 +440,7 @@ namespace Codemasters.F1_2020
                 }
                 else if (t == Team.Williams)
                 {
-                    c = Color.FromArgb(255, 255, 255, 255);
+                    c = Color.FromArgb(255, 0, 130, 250);
                 }
                 else if (t == Team.RacingPoint)
                 {
