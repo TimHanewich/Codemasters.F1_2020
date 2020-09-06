@@ -936,6 +936,34 @@ namespace Codemasters.F1_2020
                 return ToReturn;
             }
 
+            public static string GetDriverStatusFriendlyName(LapPacket.DriverStatus driver_status)
+            {
+                string ToReturn = "?";
+
+                if (driver_status == LapPacket.DriverStatus.FlyingLap)
+                {
+                    ToReturn = "Flying Lap";
+                }
+                else if (driver_status == LapPacket.DriverStatus.InGarage)
+                {
+                    ToReturn = "In Garage";
+                }
+                else if (driver_status == LapPacket.DriverStatus.InLap)
+                {
+                    ToReturn = "In Lap";
+                }
+                else if (driver_status == LapPacket.DriverStatus.OnTrack)
+                {
+                    ToReturn = "On Track";
+                }
+                else if (driver_status == LapPacket.DriverStatus.OutLap)
+                {
+                    ToReturn = "Out Lap";
+                }
+                
+                return ToReturn;
+            }
+
             #endregion
         
         }
