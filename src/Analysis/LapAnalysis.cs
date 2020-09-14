@@ -24,5 +24,6 @@ namespace Codemasters.F1_2020.Analysis
         public ushort TopSpeedKph {get; set;}
         public ushort TopSpeedMph {get; set;}
         public float IncrementalAverageTyreWear {get; set;}
+        public TyreCompound EquippedTyreCompound {get; set;}
     }
 }

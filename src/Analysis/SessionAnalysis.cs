@@ -141,6 +141,54 @@ namespace Codemasters.F1_2020.Analysis
                 this_lap_analysis.Corners = _CornerAnalysis.ToArray();
                 
 
+                //Get the tyre compound that is being used for this lap
+                List<TyreCompound> CompoundsUsedThisLap = new List<TyreCompound>();
+                foreach (PacketFrame pf in ThisLapFrames)
+                {
+                    //Add the compound to the list
+                    TyreCompound this_comp = pf.CarStatus.FieldCarStatusData[pf.CarStatus.PlayerCarIndex].EquippedTyreCompound;
+                    if (CompoundsUsedThisLap.Contains(this_comp) == false)
+                    {
+                        CompoundsUsedThisLap.Add(this_comp);
+                    }
+                }
+                if (CompoundsUsedThisLap.Count == 1) //If there is only one tyre compound that was used this lap, plug that one in
+                {
+                    this_lap_analysis.EquippedTyreCompound = CompoundsUsedThisLap[0];
+                }
+                else //If there were multiple compounds that were used, check which one was used more
+                {
+
+                    //Find the one that is used most
+                    int HighestSeen = 0;
+                    TyreCompound winner = CompoundsUsedThisLap[0];
+                    foreach (TyreCompound tc in CompoundsUsedThisLap)
+                    {
+                        //Count it
+                        int this_times = 0;
+                        foreach (PacketFrame pf in ThisLapFrames)
+                        {
+                            TyreCompound thistc = pf.CarStatus.FieldCarStatusData[pf.CarStatus.PlayerCarIndex].EquippedTyreCompound;
+                            if (thistc == tc)
+                            {
+                                this_times = this_times + 1;
+                            }
+                        }
+
+                        //Is it greater? if so, kick out the winner
+                        if (this_times >= HighestSeen)
+                        {
+                            HighestSeen = this_times;
+                            winner = tc;
+                        }
+                    }
+
+                    //Plug it in
+                    this_lap_analysis.EquippedTyreCompound = winner;
+                }
+
+
+
                 //Add this to the list of lap analyses
                 _LapAnalysis.Add(this_lap_analysis);
 
