@@ -146,7 +146,7 @@ namespace Codemasters.F1_2020.Analysis
                 foreach (PacketFrame pf in ThisLapFrames)
                 {
                     //Add the compound to the list
-                    TyreCompound this_comp = pf.CarStatus.FieldCarStatusData[pf.CarStatus.PlayerCarIndex].EquippedTyreCompound;
+                    TyreCompound this_comp = pf.CarStatus.FieldCarStatusData[driver_index].EquippedTyreCompound;
                     if (CompoundsUsedThisLap.Contains(this_comp) == false)
                     {
                         CompoundsUsedThisLap.Add(this_comp);
@@ -168,7 +168,7 @@ namespace Codemasters.F1_2020.Analysis
                         int this_times = 0;
                         foreach (PacketFrame pf in ThisLapFrames)
                         {
-                            TyreCompound thistc = pf.CarStatus.FieldCarStatusData[pf.CarStatus.PlayerCarIndex].EquippedTyreCompound;
+                            TyreCompound thistc = pf.CarStatus.FieldCarStatusData[driver_index].EquippedTyreCompound;
                             if (thistc == tc)
                             {
                                 this_times = this_times + 1;
