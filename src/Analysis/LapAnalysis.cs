@@ -23,7 +23,13 @@ namespace Codemasters.F1_2020.Analysis
         public int GearChanges {get; set;}
         public ushort TopSpeedKph {get; set;}
         public ushort TopSpeedMph {get; set;}
-        public float IncrementalAverageTyreWear {get; set;}
         public TyreCompound EquippedTyreCompound {get; set;}
+
+        //Tyre wear
+        public float IncrementalTyreWear_RearLeft {get; set;}
+        public float IncrementalTyreWear_RearRight {get; set;}
+        public float IncrementalTyreWear_FrontLeft {get; set;}
+        public float IncrementalTyreWear_FrontRight {get; set;}
+        public float IncrementalAverageTyreWear {get; set;}
     }
 }

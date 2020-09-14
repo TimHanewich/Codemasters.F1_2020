@@ -560,6 +560,10 @@ namespace Codemasters.F1_2020.Analysis
                     if (la.LapNumber == lapnum)
                     {
                         la.IncrementalAverageTyreWear = avginctyrewear;
+                        la.IncrementalTyreWear_RearLeft = tyrewear_end.RearLeft - tyrewear_start.RearLeft;
+                        la.IncrementalTyreWear_RearRight = tyrewear_end.RearRight - tyrewear_start.RearRight;
+                        la.IncrementalTyreWear_FrontLeft = tyrewear_end.FrontLeft - tyrewear_start.FrontLeft;
+                        la.IncrementalTyreWear_FrontRight = tyrewear_end.FrontRight - tyrewear_start.FrontRight;
                     }
                 }
 
