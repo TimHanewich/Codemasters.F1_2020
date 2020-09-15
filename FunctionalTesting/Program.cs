@@ -24,7 +24,7 @@ namespace FunctionalTesting
 
             foreach (LapAnalysis la in sa.Laps)
             {
-                Console.WriteLine(la.EquippedTyreCompound.ToString() + " - " + la.IncrementalTyreWear_FrontLeft.ToString() + " " + la.IncrementalTyreWear_FrontRight.ToString() + " " + la.IncrementalTyreWear_RearLeft.ToString() + " " + la.IncrementalTyreWear_RearRight.ToString());
+                Console.WriteLine(la.EquippedTyreCompound.ToString() + " - " + JsonConvert.SerializeObject(la.IncrementalTyreWear) + " - " + JsonConvert.SerializeObject(la.BeginningTyreWear));
             }
         }
     }
