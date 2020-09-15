@@ -559,11 +559,21 @@ namespace Codemasters.F1_2020.Analysis
                 {
                     if (la.LapNumber == lapnum)
                     {
+                        //Incremental tyre wear
                         la.IncrementalAverageTyreWear = avginctyrewear;
-                        la.IncrementalTyreWear_RearLeft = tyrewear_end.RearLeft - tyrewear_start.RearLeft;
-                        la.IncrementalTyreWear_RearRight = tyrewear_end.RearRight - tyrewear_start.RearRight;
-                        la.IncrementalTyreWear_FrontLeft = tyrewear_end.FrontLeft - tyrewear_start.FrontLeft;
-                        la.IncrementalTyreWear_FrontRight = tyrewear_end.FrontRight - tyrewear_start.FrontRight;
+                        la.IncrementalTyreWear = new WheelDataArray();
+                        la.IncrementalTyreWear.RearLeft = tyrewear_end.RearLeft - tyrewear_start.RearLeft;
+                        la.IncrementalTyreWear.RearRight = tyrewear_end.RearRight - tyrewear_start.RearRight;
+                        la.IncrementalTyreWear.FrontLeft = tyrewear_end.FrontLeft - tyrewear_start.FrontLeft;
+                        la.IncrementalTyreWear.FrontRight = tyrewear_end.FrontRight - tyrewear_start.FrontRight;
+
+                        //Beginning (snapshot) tyre wear
+                        la.BeginningAverageTyreWear = AvgTyreWear_Start;
+                        la.BeginningTyreWear = new WheelDataArray();
+                        la.BeginningTyreWear.RearLeft = tyrewear_start.RearLeft;
+                        la.BeginningTyreWear.RearRight = tyrewear_start.RearRight;
+                        la.BeginningTyreWear.FrontLeft = tyrewear_start.FrontLeft;
+                        la.BeginningTyreWear.FrontRight = tyrewear_start.FrontRight;
                     }
                 }
 

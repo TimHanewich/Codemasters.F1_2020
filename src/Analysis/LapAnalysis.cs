@@ -25,11 +25,12 @@ namespace Codemasters.F1_2020.Analysis
         public ushort TopSpeedMph {get; set;}
         public TyreCompound EquippedTyreCompound {get; set;}
 
-        //Tyre wear
-        public float IncrementalTyreWear_RearLeft {get; set;}
-        public float IncrementalTyreWear_RearRight {get; set;}
-        public float IncrementalTyreWear_FrontLeft {get; set;}
-        public float IncrementalTyreWear_FrontRight {get; set;}
+        //Incremental Tyre Wear
+        public WheelDataArray IncrementalTyreWear {get; set;}
         public float IncrementalAverageTyreWear {get; set;}
+
+        //Beginning tyre wear (snapshot)
+        public WheelDataArray BeginningTyreWear {get; set;}
+        public float BeginningAverageTyreWear {get; set;}
     }
 }
