@@ -13,19 +13,7 @@ namespace FunctionalTesting
     {
         static void Main(string[] args)
         {
-            string path = "C:\\Users\\TaHan\\Downloads\\Codemasters.F1_2020\\SampleData\\Australia_Practice_AlphaTauri.json";
-            string content = System.IO.File.ReadAllText(path);
-
-            List<byte[]> bytes = JsonConvert.DeserializeObject<List<byte[]>>(content);
-            Packet[] packets = Packet.BulkLoadAllSessionData(bytes);
-            SessionAnalysis sa = new SessionAnalysis();
-            Console.WriteLine("Loading...");
-            sa.Load(packets, packets[0].PlayerCarIndex);
-
-            foreach (LapAnalysis la in sa.Laps)
-            {
-                Console.WriteLine(la.EquippedTyreCompound.ToString() + " - " + JsonConvert.SerializeObject(la.IncrementalTyreWear) + " - " + JsonConvert.SerializeObject(la.BeginningTyreWear));
-            }
+            TrackDataContainer tdc = TrackDataContainer.LoadTrack(Track.AbuDhabi);
         }
     }
 }
