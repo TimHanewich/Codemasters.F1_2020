@@ -664,6 +664,10 @@ namespace Codemasters.F1_2020
                 {
                     ToReturn = "Hockenheim";
                 }
+                else if (t == Track.Hungaroring)
+                {
+                    ToReturn = "Hungaroring";
+                }
                 else if (t == Track.Spa)
                 {
                     ToReturn = "Spa (Belgium)";
