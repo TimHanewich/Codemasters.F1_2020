@@ -63,3 +63,5 @@ You may need to, for example, find the accompanying `CarStatusPacket` for a part
 
     TelemetryPacket telpack;
     CarStatusPacket csp = (CarStatusPacket)telpack.GetRelatedPacket(packets, PacketType.CarStatus);
+
+**If you previously used the Codemasters.F1_2020.Analysis namespace and now find it missing: The analysis namespace has been moved under the ApexVisual.F1_2020 NuGet package (https://www.nuget.org/packages/ApexVisual.F1_2020/)
