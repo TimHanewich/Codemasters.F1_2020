@@ -12,6 +12,8 @@ namespace FunctionalTesting
     {
         static void Main(string[] args)
         {
+            Driver d = CodemastersToolkit.GetDriverFromDriverId(85);
+            Console.WriteLine(d.ToString());
             
         }
     }
