@@ -395,7 +395,7 @@ namespace Codemasters.F1_2020
                 }
                 else
                 {
-                    return SurfaceType.Unknown;
+                    throw new Exception("Surface type ID not recognized");
                 }
             }
 
