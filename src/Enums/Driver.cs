@@ -82,7 +82,6 @@ namespace Codemasters.F1_2020
         AnthoineHubert = 87,
         GuilianoAlesi = 88,
         RalphBoschung = 89,
-        Unknown = 255
     }
 
 }

@@ -257,7 +257,7 @@ namespace Codemasters.F1_2020
 
                 }
 
-                Driver d = Driver.Unknown;
+                Driver d = Driver.LewisHamilton;
                 foreach (KeyValuePair<byte, Driver> kvp in Dict)
                 {
                     if (kvp.Key == id)
