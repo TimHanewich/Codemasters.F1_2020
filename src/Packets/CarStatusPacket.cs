@@ -279,25 +279,16 @@ namespace Codemasters.F1_2020
                 }
                 else if (nb == 1)
                 {
-                    ToReturn.SelectedErsDeployMode = ErsDeployMode.Low;
+                    ToReturn.SelectedErsDeployMode = ErsDeployMode.Medium;
                 }
                 else if (nb == 2)
                 {
-                    ToReturn.SelectedErsDeployMode = ErsDeployMode.Medium;
+                    ToReturn.SelectedErsDeployMode = ErsDeployMode.Overtake;
                 }
                 else if (nb == 3)
                 {
-                    ToReturn.SelectedErsDeployMode = ErsDeployMode.High;
-                }
-                else if (nb == 4)
-                {
-                    ToReturn.SelectedErsDeployMode = ErsDeployMode.Overtake;
-                }
-                else if (nb == 5)
-                {
                     ToReturn.SelectedErsDeployMode = ErsDeployMode.HotLap;
                 }
-
 
                 //Ers Harvested this lap by MGUK
                 ToReturn.ErsHarvestedThisLapByMGUK = BitConverter.ToSingle(bam.NextBytes(4), 0);

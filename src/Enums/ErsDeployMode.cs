@@ -4,11 +4,9 @@ namespace Codemasters.F1_2020
 {
     public enum ErsDeployMode
     {
-        None,
-        Low,
-        Medium,
-        High,
-        Overtake,
-        HotLap
+        None = 0,
+        Medium = 1,
+        Overtake = 2,
+        HotLap = 3
     }
 }
