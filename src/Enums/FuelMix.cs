@@ -4,9 +4,9 @@ namespace Codemasters.F1_2020
 {
     public enum FuelMix
     {
-        Lean,
-        Standard,
-        Rich,
-        Max
+        Lean = 0,
+        Standard = 1,
+        Rich = 2,
+        Max = 3
     }
 }
