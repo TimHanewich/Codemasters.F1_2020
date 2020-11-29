@@ -331,7 +331,7 @@ namespace Codemasters.F1_2020
                 Dict.Add(56, Team.Jordan1991);
                 Dict.Add(255, Team.MyTeam);
 
-                Team tr = Team.Unknown;
+                Team tr = Team.MyTeam;
                 foreach (KeyValuePair<byte, Team> kvp in Dict)
                 {
                     if (kvp.Key == id)
