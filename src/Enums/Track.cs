@@ -30,7 +30,6 @@ namespace Codemasters.F1_2020
         TexasShort = 23,
         SuzukaShort = 24,
         Hanoi = 25,
-        Zandvoort = 26,
-        Unknown = 255
+        Zandvoort = 26
     }
 }

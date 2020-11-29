@@ -56,7 +56,7 @@ namespace Codemasters.F1_2020
 
             public static Track GetTrackFromTrackId(byte id)
             {
-                Track ReturnTrack = Track.Unknown;
+                Track ReturnTrack = Track.Melbourne;
 
                 if (id == 0)
                 {
