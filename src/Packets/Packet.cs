@@ -10,7 +10,7 @@ namespace Codemasters.F1_2020
     public class Packet
     {
 
-        public Game PacketFormat { get; set; }
+        public ushort PacketFormat { get; set; }
         public byte GameMajorVersion { get; set; }
         public byte GameMinorVersion { get; set; }
         public byte PacketVersion { get; set; }
@@ -30,26 +30,7 @@ namespace Codemasters.F1_2020
             ToConvert.Add(BAM.NextByte());
             ToConvert.Add(BAM.NextByte());
             ushort i = BitConverter.ToUInt16(ToConvert.ToArray(), 0);
-            if (i.ToString() == "2017")
-            {
-                PacketFormat = Game.F1_2017;
-            }
-            else if (i.ToString() == "2018")
-            {
-                PacketFormat = Game.F1_2018;
-            }
-            else if (i.ToString() == "2019")
-            {
-                PacketFormat = Game.F1_2019;
-            }
-            else if (i.ToString() == "2020")
-            {
-                PacketFormat = Game.F1_2020;
-            }
-            else
-            {
-                PacketFormat = Game.Unknown;
-            }
+            PacketFormat = i;
             ToConvert.Clear();
 
             //Get major version
