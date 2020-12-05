@@ -208,7 +208,9 @@ namespace Codemasters.F1_2020
                     }
                     else if (pt == PacketType.LobbyInfo)
                     {
-                        //Lobby info packet not done yet.
+                        LobbyInfoPacket fcp = new LobbyInfoPacket();
+                        fcp.LoadBytes(b);
+                        Packets.Add(fcp);
                     }
                 }
 
