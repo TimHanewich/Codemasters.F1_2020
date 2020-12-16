@@ -865,6 +865,94 @@ namespace Codemasters.F1_2020
 
             #endregion
         
+            #region "Tyre Compounds for Tracks"
+
+            public static TyreCompound GetSoftTyreCompoundForTrack(Track t)
+            {
+                TyreCompound Mediums = GetMediumTyreCompoundForTrack(t);
+                if (Mediums == TyreCompound.C4)
+                {
+                    return TyreCompound.C5;
+                }
+                else if (Mediums == TyreCompound.C3)
+                {
+                    return TyreCompound.C4;
+                }
+                else if (Mediums == TyreCompound.C2)
+                {
+                    return TyreCompound.C3;
+                }
+                else
+                {
+                    throw new Exception("Unable to get soft compound for Track '" + t.ToString() + "'");
+                }
+            }
+            
+            public static TyreCompound GetMediumTyreCompoundForTrack(Track t)
+            {
+                List<KeyValuePair<Track, TyreCompound>> KVPs = new List<KeyValuePair<Track, TyreCompound>>();
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Melbourne, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.PaulRicard, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Shanghai, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Sakhir, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Catalunya, TyreCompound.C2));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Monaco, TyreCompound.C4));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Montreal, TyreCompound.C4));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Silverstone, TyreCompound.C2));
+                
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Hungaroring, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Spa, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Monza, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Singapore, TyreCompound.C4));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Suzuka, TyreCompound.C2));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.AbuDhabi, TyreCompound.C4));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Texas, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Brazil, TyreCompound.C2));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Austria, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Sochi, TyreCompound.C4));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Mexico, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Baku, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.SakhirShort, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.SilverstoneShort, TyreCompound.C2));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.TexasShort, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.SuzukaShort, TyreCompound.C2));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Hanoi, TyreCompound.C3));
+                KVPs.Add(new KeyValuePair<Track, TyreCompound>(Track.Zandvoort, TyreCompound.C2));
+
+                foreach (KeyValuePair<Track, TyreCompound> kvp in KVPs)
+                {
+                    if (kvp.Key == t)
+                    {
+                        return kvp.Value;
+                    }
+                }
+
+                throw new Exception("Unable to find tyre compound for track '" + t.ToString() + "'");
+            }
+
+            public static TyreCompound GetHardTyreCompoundForTrack(Track t)
+            {
+                TyreCompound Mediums = GetMediumTyreCompoundForTrack(t);
+                if (Mediums == TyreCompound.C4)
+                {
+                    return TyreCompound.C3;
+                }
+                else if (Mediums == TyreCompound.C3)
+                {
+                    return TyreCompound.C2;
+                }
+                else if (Mediums == TyreCompound.C2)
+                {
+                    return TyreCompound.C1;
+                }
+                else
+                {
+                    throw new Exception("Unable to get hard compound for Track '" + t.ToString() + "'");
+                }
+            }
+            
+            #endregion
+
         }
 
 }
