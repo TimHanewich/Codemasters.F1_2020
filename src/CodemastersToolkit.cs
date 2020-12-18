@@ -953,6 +953,46 @@ namespace Codemasters.F1_2020
             
             #endregion
 
+            #region "3 Driver display letters"
+
+            public static string GetDriverThreeLetters(Driver d)
+            {
+                List<KeyValuePair<Driver, string>> KVPs = new List<KeyValuePair<Driver, string>>();
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.MaxVerstappen, "VER"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.ValtteriBottas, "BOT"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.LewisHamilton, "HAM"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.LandoNorris, "NOR"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.AlexanderAlbon, "ALB"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.CarlosSainz, "SAI"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.DaniilKvyat, "KVY"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.LanceStroll, "STR"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.EstebanOcon, "OCO"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.PierreGasly, "GAS"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.DanielRicciardo, "RIC"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.SebastianVettel, "VET"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.CharlesLeclerc, "LEC"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.KimiRaikkonen, "RAI"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.AntonioGiovinazzi, "GIO"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.GeorgeRussell, "RUS"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.KevinMagnussen, "MAG"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.RomainGrosjean, "GRO"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.NicholasLatifi, "LAT"));
+                KVPs.Add(new KeyValuePair<Driver, string>(Driver.SergioPerez, "PER"));
+
+                foreach (KeyValuePair<Driver, string> KVP in KVPs)
+                {
+                    if (KVP.Key == d)
+                    {
+                        return KVP.Value;
+                    }
+                }
+
+                //If we've gotten this far, we dont have it
+                string displayname = d.ToString();
+                return displayname.Substring(0, 3).ToUpper();
+            }
+
+            #endregion
         }
 
 }
