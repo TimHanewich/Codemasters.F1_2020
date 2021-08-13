@@ -1,5 +1,7 @@
 src/bin/
 src/obj/
-
 FunctionalTesting/bin/
 FunctionalTesting/obj/
+.vscode/
+src/.vs/
+FunctionalTesting/.vs/
