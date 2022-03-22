@@ -19,7 +19,7 @@ namespace Codemasters.F1_2020
         public float SessionTime { get; set; }
         public uint FrameIdentifier { get; set; }
         public byte PlayerCarIndex { get; set; }
-        public byte SecondaryPlayerCarIndex {get; set;} //New to F1 2020. The index of the secondayr player's car (splitscreen).  255 if no second player.
+        public byte SecondaryPlayerCarIndex {get; set;} //New to F1 2020. The index of the secondary player's car (splitscreen).  255 if no second player.
 
         public virtual void LoadBytes(byte[] bytes)
         {
@@ -176,7 +176,9 @@ namespace Codemasters.F1_2020
                     }
                     else if (pt == PacketType.Event)
                     {
-                        //Event packet not complete yet
+                        EventPacket ep = new EventPacket();
+                        ep.LoadBytes(b);
+                        Packets.Add(ep);
                     }
                     else if (pt == PacketType.Participants)
                     {
